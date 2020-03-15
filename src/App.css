@@ -1,13 +1,14 @@
 .app-wrapper {
   margin: 0 auto;
   width: 1200px;
+  height: 100vh;
   display: grid;
   grid-template-areas:
     "h h"
     "n c";
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
-  /* grid-gap: 10px; */
+  grid-gap: 3px;
 }
 
 .header {
@@ -17,14 +18,26 @@
 
 .nav {
   grid-area: n;
-  background-color: rgb(186, 226, 210);
+  background-color: rgb(116, 219, 116);
+  padding: 0.7rem;
 }
 
 .content {
   grid-area: c;
-  background-color: rgb(107, 185, 183);
+  background-color: rgb(212, 224, 224);
+}
+
+.content img {
+  width: 15rem;
+  margin: 0.4rem;
 }
 
 .header img {
-  width: 20px;
+  width: 3rem;
+  margin: 0.4rem;
+  margin-left: 0.7rem;
+}
+
+.nav div {
+  padding: 0.2rem;
 }
