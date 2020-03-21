@@ -1,0 +1,13 @@
+.content {
+  grid-area: c;
+  background-color: rgb(15, 161, 161);
+}
+
+.content img {
+  width: 25rem;
+  margin: 0.4rem;
+}
+
+.item {
+  color: rgb(26, 26, 105);
+}
