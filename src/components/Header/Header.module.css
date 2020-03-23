@@ -1,4 +1,5 @@
 .header {
+  border-radius: 0.4rem;
   grid-area: h;
   background-color: rgb(116, 219, 116);
 }

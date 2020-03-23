@@ -12,6 +12,9 @@
 }
 
 .app-wrapper-content {
+  padding-left: 1rem;
+  padding-top: 0.2rem;
+  border-radius: 0.4rem;
   grid-area: c;
   background-color: rgb(15, 161, 161);
 }

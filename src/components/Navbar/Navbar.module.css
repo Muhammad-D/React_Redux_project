@@ -1,18 +1,19 @@
 .nav {
+  padding: 0.8rem;
+  border-radius: 0.4rem;
   grid-area: n;
   background-color: rgb(116, 219, 116);
-  padding: 0.7rem;
 }
 
 .nav div {
   padding: 0.2rem;
 }
 
-.item {
+.item a {
   color: white;
   text-decoration: none;
 }
 
-.item.active {
+.item a.activeLink {
   color: rgb(19, 17, 5);
 }
