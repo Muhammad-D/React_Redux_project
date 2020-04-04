@@ -10,7 +10,7 @@ import Music from "./components/Music/Music";
 import News from "./components/News/News";
 
 const App = props => {
-  let SummonDialogs = () => <Dialogs dialogsData1={props.dialogsData0} />;
+  let SummonDialogs = () => <Dialogs dialogsData={props.dialogsData} />;
 
   return (
     <BrowserRouter>
@@ -21,7 +21,7 @@ const App = props => {
           <Route path="/dialogs" component={SummonDialogs} />
           <Route
             path="/profile"
-            render={() => <Profile postsData1={props.postsData0} />}
+            render={() => <Profile postsData={props.postsData} />}
           />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />
