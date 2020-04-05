@@ -10,18 +10,19 @@ import Music from "./components/Music/Music";
 import News from "./components/News/News";
 
 const App = props => {
-  let SummonDialogs = () => <Dialogs dialogsData={props.dialogsData} />;
-
   return (
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
         <Navbar />
         <div className="app-wrapper-content">
-          <Route path="/dialogs" component={SummonDialogs} />
+          <Route
+            path="/dialogs"
+            render={() => <Dialogs state={props.state.dialogsPage} />}
+          />
           <Route
             path="/profile"
-            render={() => <Profile postsData={props.postsData} />}
+            render={() => <Profile state={props.state.profilePage} />}
           />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />
