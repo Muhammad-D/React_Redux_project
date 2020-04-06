@@ -9,12 +9,12 @@ import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 
-const App = props => {
+const App = (props) => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Navbar />
+        <Navbar state={props.state.navbar} />
         <div className="app-wrapper-content">
           <Route
             path="/dialogs"
