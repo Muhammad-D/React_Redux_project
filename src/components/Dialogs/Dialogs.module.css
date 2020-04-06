@@ -8,3 +8,9 @@
 .message {
   margin: 0.4rem;
 }
+
+/* Styling of Messages */
+
+[key="2"] {
+  color: red;
+}

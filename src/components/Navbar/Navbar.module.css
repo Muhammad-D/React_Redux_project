@@ -1,11 +1,12 @@
 .nav {
-  padding: 0.8rem;
+  padding: 0.4rem;
   border-radius: 0.4rem;
   grid-area: n;
   background-color: rgb(116, 219, 116);
+  font-size: 1rem;
 }
 
-.nav div {
+.nav .item {
   padding: 0.2rem;
 }
 
@@ -16,4 +17,33 @@
 
 .item a.activeLink {
   color: rgb(19, 17, 5);
+}
+
+/* Inner GRID */
+
+.nav {
+  display: grid;
+  grid-template-rows: 5fr 3fr 5fr;
+}
+
+/* 11 */
+
+/* SubNavFriends */
+
+.subNavbarFriends {
+  font-size: 0.8rem;
+  margin: 0.4rem;
+  padding: 0.2rem;
+  border-radius: 0.4rem;
+  background-color: rgb(116, 195, 116);
+}
+
+.navFriends {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.subNavbarFriends .title {
+  text-align: center;
+  font-weight: bolder;
 }
