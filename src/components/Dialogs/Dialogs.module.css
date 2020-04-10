@@ -1,12 +1,36 @@
 .dialogs {
   display: grid;
   grid-template-columns: 2fr 10fr;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 0.5rem;
+  grid-template-areas:
+    "di m"
+    "di t";
   margin: 0.5rem;
 }
 
 .dialog,
 .message {
   margin: 0.4rem;
+}
+
+.dialogItems {
+  grid-area: di;
+}
+
+.messages {
+  grid-area: m;
+}
+
+.sendText {
+  grid-area: t;
+}
+
+.textarea {
+  padding: 0.3rem;
+  width: 20rem;
+  height: 2rem;
+  border-radius: 0.2rem;
 }
 
 /* Styling of Messages */
