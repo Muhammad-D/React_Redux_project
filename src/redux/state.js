@@ -52,4 +52,10 @@ let state = {
   },
 };
 
+export let addPost = (newMessages) => {
+  debugger;
+  let _newPost = { id: 4, likeCount: 0, message: newMessages };
+  state.profilePage.posts.push(_newPost);
+};
+
 export default state;

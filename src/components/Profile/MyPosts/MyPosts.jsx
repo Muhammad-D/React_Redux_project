@@ -11,7 +11,7 @@ const MyPosts = (props) => {
 
   let addPost = () => {
     let text = createPostRef.current.value;
-    alert(text);
+    props.addPost(text);
   };
 
   return (
