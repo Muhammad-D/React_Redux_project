@@ -1,5 +1,6 @@
-import { renderEntireTree } from "../render";
 import React from "react";
+
+let renderEntireTree = () => {};
 
 let state = {
   createRef: React.createRef(),
@@ -53,6 +54,8 @@ let state = {
   },
 };
 
+window.state = state;
+
 // Logic for a Post
 
 export let addPost = () => {
@@ -85,6 +88,10 @@ export let onMessageChange = () => {
   let newMessageText = state.createRef.current.value;
   state.dialogsPage.newMessageText = newMessageText;
   renderEntireTree(state, addPost, onPostChange, addMessage, onMessageChange);
+};
+
+export const subscriber = (observer) => {
+  renderEntireTree = observer;
 };
 
 export default state;
