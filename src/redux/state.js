@@ -1,3 +1,6 @@
+import { renderEntireTree } from "../render";
+import React from "react";
+
 let state = {
   profilePage: {
     posts: [
@@ -5,6 +8,7 @@ let state = {
       { id: 2, likeCount: 4, message: "It's my first post" },
       { id: 3, likeCount: 8, message: "It's great to be here" },
     ],
+    createPostRef: React.createRef(),
   },
   dialogsPage: {
     dialogs: [
@@ -52,10 +56,13 @@ let state = {
   },
 };
 
-export let addPost = (newMessages) => {
+export let addPost = () => {
   debugger;
-  let _newPost = { id: 4, likeCount: 0, message: newMessages };
+  let text = state.profilePage.createPostRef.current.value;
+  let _newPost = { id: 4, likeCount: 0, message: text };
   state.profilePage.posts.push(_newPost);
+  // state.profilePage.createPostRef.current.value = "";
+  renderEntireTree(state, addPost);
 };
 
 export default state;
