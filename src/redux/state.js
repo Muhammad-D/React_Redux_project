@@ -61,7 +61,7 @@ export let addPost = () => {
   let text = state.profilePage.createPostRef.current.value;
   let _newPost = { id: 4, likeCount: 0, message: text };
   state.profilePage.posts.push(_newPost);
-  // state.profilePage.createPostRef.current.value = "";
+  state.profilePage.createPostRef.current.value = "";
   renderEntireTree(state, addPost);
 };
 
