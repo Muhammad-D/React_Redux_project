@@ -5,10 +5,22 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 
-export const renderEntireTree = (state, addPost) => {
+export const renderEntireTree = (
+  state,
+  addPost,
+  onPostChange,
+  addMessage,
+  onMessageChange
+) => {
   ReactDOM.render(
     <BrowserRouter>
-      <App state={state} addPost={addPost} />
+      <App
+        state={state}
+        addPost={addPost}
+        onPostChange={onPostChange}
+        addMessage={addMessage}
+        onMessageChange={onMessageChange}
+      />
     </BrowserRouter>,
     document.getElementById("root")
   );

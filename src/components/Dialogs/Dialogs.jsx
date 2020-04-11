@@ -6,26 +6,32 @@ import Message from "./Message/Message";
 import { render } from "@testing-library/react";
 
 const Dialogs = (props) => {
-  let dialogsElements = props.state.dialogs.map((d, i) => (
+  let dialogsElements = props.state.dialogsPage.dialogs.map((d, i) => (
     <DialogItem key={i.toString()} name={d.name} id={d.id} />
   ));
 
-  let messagesElements = props.state.messages.messages.map((m, i) => (
+  let messagesElements = props.state.dialogsPage.messages.map((m, i) => (
     <Message key={i} message={m.message} />
   ));
 
-  let refToText = React.createRef();
-
   let addMessage = () => {
-    let text = refToText.current.value;
-    alert(text);
+    props.addMessage();
+  };
+
+  let onMessageChange = () => {
+    props.onMessageChange();
   };
   return (
     <div className={s.dialogs}>
       <div className={s.dialogItems}>{dialogsElements}</div>
       <div className={s.messages}>{messagesElements}</div>
       <div className={s.sendText}>
-        <textarea ref={refToText} className={s.textarea}></textarea>
+        <textarea
+          onChange={onMessageChange}
+          value={props.state.dialogsPage.newMessageText}
+          ref={props.state.createRef}
+          className={s.textarea}
+        ></textarea>
         <div>
           <button onClick={addMessage}>SEND Messsage</button>
         </div>

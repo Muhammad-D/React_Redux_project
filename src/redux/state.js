@@ -2,13 +2,14 @@ import { renderEntireTree } from "../render";
 import React from "react";
 
 let state = {
+  createRef: React.createRef(),
   profilePage: {
     posts: [
       { id: 1, likeCount: 15, message: "Hi, how are you?" },
       { id: 2, likeCount: 4, message: "It's my first post" },
       { id: 3, likeCount: 8, message: "It's great to be here" },
     ],
-    createPostRef: React.createRef(),
+    newPostText: "enter your Post",
   },
   dialogsPage: {
     dialogs: [
@@ -19,21 +20,17 @@ let state = {
       { id: 5, name: "Victor" },
       { id: 6, name: "Valera" },
     ],
-    messages: {
-      messages: [
-        { id: 1, message: "Hi mate!" },
-        { id: 1, message: "Hello,bro" },
-        { id: 1, message: "What's going on there?" },
-        { id: 1, message: "Everything is fine! Thanks for asking" },
-        { id: 1, message: "Would you like to hang out tomorrow?" },
-        {
-          id: 1,
-          message: "You won't believe, I wanted to ask you the same question",
-        },
-        { id: 1, message: "Niiiice!!! So, see dog" },
-        { id: 1, message: "See you bro" },
-      ],
-    },
+    messages: [
+      { id: 1, message: "Hi mate!" },
+      { id: 1, message: "Hello,bro" },
+      { id: 1, message: "What's going on there?" },
+      { id: 1, message: "Everything is fine! Thanks for asking" },
+      { id: 1, message: "Would you like to hang out tomorrow?" },
+      { id: 1, message: "You won't believe, I wanted to ask you" },
+      { id: 1, message: "Niiiice!!! So, see dog" },
+      { id: 1, message: "See you bro" },
+    ],
+    newMessageText: "enter message",
   },
   navbar: {
     friends: [
@@ -56,13 +53,38 @@ let state = {
   },
 };
 
+// Logic for a Post
+
 export let addPost = () => {
-  debugger;
-  let text = state.profilePage.createPostRef.current.value;
-  let _newPost = { id: 4, likeCount: 0, message: text };
+  let _newPost = {
+    id: 4,
+    likeCount: 0,
+    message: state.profilePage.newPostText,
+  };
   state.profilePage.posts.push(_newPost);
-  state.profilePage.createPostRef.current.value = "";
-  renderEntireTree(state, addPost);
+  state.profilePage.newPostText = "";
+  renderEntireTree(state, addPost, onPostChange, addMessage, onMessageChange);
+};
+
+export let onPostChange = () => {
+  let newText = state.createRef.current.value;
+  state.profilePage.newPostText = newText;
+  renderEntireTree(state, addPost, onPostChange, addMessage, onMessageChange);
+};
+
+// Logic for a Message
+
+export let addMessage = () => {
+  let _newMessage = { id: 1, message: state.dialogsPage.newMessageText };
+  state.dialogsPage.messages.push(_newMessage);
+  state.dialogsPage.newMessageText = "";
+  renderEntireTree(state, addPost, onPostChange, addMessage, onMessageChange);
+};
+
+export let onMessageChange = () => {
+  let newMessageText = state.createRef.current.value;
+  state.dialogsPage.newMessageText = newMessageText;
+  renderEntireTree(state, addPost, onPostChange, addMessage, onMessageChange);
 };
 
 export default state;

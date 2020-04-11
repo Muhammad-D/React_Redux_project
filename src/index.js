@@ -1,8 +1,13 @@
-import state, { addPost } from "./redux/state";
+import state, {
+  addPost,
+  onPostChange,
+  addMessage,
+  onMessageChange,
+} from "./redux/state";
 import * as serviceWorker from "./serviceWorker";
 import { renderEntireTree } from "./render";
 
-renderEntireTree(state, addPost);
+renderEntireTree(state, addPost, onPostChange, addMessage, onMessageChange);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
