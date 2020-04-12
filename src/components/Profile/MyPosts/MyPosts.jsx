@@ -10,12 +10,12 @@ const MyPosts = (props) => {
   let addPost = () => {
     let condition = false;
     let posts = props.state.profilePage.posts;
-    props.state.commonMethods.addSmth(posts, condition);
+    props.addSmth(posts, condition);
   };
 
   let onPostChange = () => {
     let newPostText = false;
-    props.state.commonMethods.onSmthChange(newPostText);
+    props.onSmthChange(newPostText);
   };
 
   return (

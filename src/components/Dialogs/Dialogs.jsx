@@ -17,12 +17,12 @@ const Dialogs = (props) => {
   let addMessage = () => {
     let condition = true;
     let messages = props.state.dialogsPage.messages;
-    props.state.commonMethods.addSmth(messages, condition);
+    props.addSmth(messages, condition);
   };
 
   let onMessageChange = () => {
     let newMessageText = true;
-    props.state.commonMethods.onSmthChange(newMessageText);
+    props.onSmthChange(newMessageText);
   };
 
   return (
