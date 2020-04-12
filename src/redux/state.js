@@ -1,6 +1,6 @@
 import React from "react";
 
-let renderEntireTree = () => {};
+// let renderEntireTree = () => {};
 
 let state = {
   createRef: React.createRef(),
@@ -52,46 +52,80 @@ let state = {
       },
     ],
   },
+  commonMethods: {
+    onSmthChange(nText) {
+      let newText = state.createRef.current.value;
+      if (nText == false) {
+        state.profilePage.newPostText = newText;
+      } else if (nText == true) {
+        state.dialogsPage.newMessageText = newText;
+      }
+      this.renderEntireTree(state);
+    },
+    addSmth(nPostMessage, condetion) {
+      let _newPostMessage = "";
+      if (condetion == false) {
+        _newPostMessage = {
+          id: 4,
+          likeCount: 0,
+          message: state.profilePage.newPostText,
+        };
+        state.profilePage.newPostText = "";
+      } else if (condetion == true) {
+        _newPostMessage = {
+          id: 1,
+          message: state.dialogsPage.newMessageText,
+        };
+        state.dialogsPage.newMessageText = "";
+      }
+      nPostMessage.push(_newPostMessage);
+      this.renderEntireTree(state);
+    },
+    renderEntireTree() {},
+    subscriber(observer) {
+      this.renderEntireTree = observer;
+    },
+  },
 };
 
 window.state = state;
 
 // Logic for a Post
 
-export let addPost = () => {
-  let _newPost = {
-    id: 4,
-    likeCount: 0,
-    message: state.profilePage.newPostText,
-  };
-  state.profilePage.posts.push(_newPost);
-  state.profilePage.newPostText = "";
-  renderEntireTree(state, addPost, onPostChange, addMessage, onMessageChange);
-};
+// export let addPost = () => {
+//   let _newPost = {
+//     id: 4,
+//     likeCount: 0,
+//     message: state.profilePage.newPostText,
+//   };
+//   state.profilePage.posts.push(_newPost);
+//   state.profilePage.newPostText = "";
+//   renderEntireTree(state, addPost, onPostChange, addMessage, onMessageChange);
+// };
 
-export let onPostChange = () => {
-  let newText = state.createRef.current.value;
-  state.profilePage.newPostText = newText;
-  renderEntireTree(state, addPost, onPostChange, addMessage, onMessageChange);
-};
+// export let onPostChange = () => {
+//   let newText = state.createRef.current.value;
+//   state.profilePage.newPostText = newText;
+//   renderEntireTree(state, addPost, onPostChange, addMessage, onMessageChange);
+// };
 
-// Logic for a Message
+// // Logic for a Message
 
-export let addMessage = () => {
-  let _newMessage = { id: 1, message: state.dialogsPage.newMessageText };
-  state.dialogsPage.messages.push(_newMessage);
-  state.dialogsPage.newMessageText = "";
-  renderEntireTree(state, addPost, onPostChange, addMessage, onMessageChange);
-};
+// export let addMessage = () => {
+//   let _newMessage = { id: 1, message: state.dialogsPage.newMessageText };
+//   state.dialogsPage.messages.push(_newMessage);
+//   state.dialogsPage.newMessageText = "";
+//   renderEntireTree(state, addPost, onPostChange, addMessage, onMessageChange);
+// };
 
-export let onMessageChange = () => {
-  let newMessageText = state.createRef.current.value;
-  state.dialogsPage.newMessageText = newMessageText;
-  renderEntireTree(state, addPost, onPostChange, addMessage, onMessageChange);
-};
+// export let onMessageChange = () => {
+//   let newMessageText = state.createRef.current.value;
+//   state.dialogsPage.newMessageText = newMessageText;
+//   renderEntireTree(state, addPost, onPostChange, addMessage, onMessageChange);
+// };
 
-export const subscriber = (observer) => {
-  renderEntireTree = observer;
-};
+// export const subscriber = (observer) => {
+//   renderEntireTree = observer;
+// };
 
 export default state;

@@ -8,11 +8,14 @@ const MyPosts = (props) => {
   ));
 
   let addPost = () => {
-    props.addPost();
+    let condition = false;
+    let posts = props.state.profilePage.posts;
+    props.state.commonMethods.addSmth(posts, condition);
   };
 
   let onPostChange = () => {
-    props.onPostChange();
+    let newPostText = false;
+    props.state.commonMethods.onSmthChange(newPostText);
   };
 
   return (

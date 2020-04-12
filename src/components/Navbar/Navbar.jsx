@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import SubNavFriends from "./SubNavFriends/SubNavFriends";
 
 const Navbar = (props) => {
-  let subNavbar = props.state.friends.map((f, i) => (
+  let subNavbar = props.state.navbar.friends.map((f, i) => (
     <SubNavFriends key={i.toString()} friendsName={f.name} friendsImg={f.img} />
   ));
 

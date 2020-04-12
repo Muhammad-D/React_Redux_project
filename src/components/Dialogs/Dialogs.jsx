@@ -15,12 +15,16 @@ const Dialogs = (props) => {
   ));
 
   let addMessage = () => {
-    props.addMessage();
+    let condition = true;
+    let messages = props.state.dialogsPage.messages;
+    props.state.commonMethods.addSmth(messages, condition);
   };
 
   let onMessageChange = () => {
-    props.onMessageChange();
+    let newMessageText = true;
+    props.state.commonMethods.onSmthChange(newMessageText);
   };
+
   return (
     <div className={s.dialogs}>
       <div className={s.dialogItems}>{dialogsElements}</div>
