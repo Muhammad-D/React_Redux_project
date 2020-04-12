@@ -8,14 +8,18 @@ const MyPosts = (props) => {
   ));
 
   let addPost = () => {
-    let condition = false;
-    let posts = props.state.profilePage.posts;
-    props.addSmth(posts, condition);
+    props.dispatch({
+      type: "ADD-SMTH",
+      condition: false,
+      nPostMessage: props.state.profilePage.posts,
+    });
   };
 
   let onPostChange = () => {
-    let newPostText = false;
-    props.onSmthChange(newPostText);
+    props.dispatch({
+      type: "CHANGE-SMTH",
+      condition: false,
+    });
   };
 
   return (

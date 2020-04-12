@@ -9,11 +9,7 @@ import * as serviceWorker from "./serviceWorker";
 const renderEntireTree = (state) => {
   ReactDOM.render(
     <BrowserRouter>
-      <App
-        state={state}
-        onSmthChange={store.onSmthChange.bind(store)}
-        addSmth={store.addSmth.bind(store)}
-      />
+      <App state={state} dispatch={store.dispatch.bind(store)} />
     </BrowserRouter>,
     document.getElementById("root")
   );

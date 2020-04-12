@@ -15,14 +15,18 @@ const Dialogs = (props) => {
   ));
 
   let addMessage = () => {
-    let condition = true;
-    let messages = props.state.dialogsPage.messages;
-    props.addSmth(messages, condition);
+    props.dispatch({
+      type: "ADD-SMTH",
+      condition: true,
+      nPostMessage: props.state.dialogsPage.messages,
+    });
   };
 
   let onMessageChange = () => {
-    let newMessageText = true;
-    props.onSmthChange(newMessageText);
+    props.dispatch({
+      type: "CHANGE-SMTH",
+      condition: true,
+    });
   };
 
   return (

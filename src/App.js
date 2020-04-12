@@ -18,21 +18,13 @@ const App = (props) => {
         <Route
           path="/dialogs"
           render={() => (
-            <Dialogs
-              state={props.state}
-              onSmthChange={props.onSmthChange}
-              addSmth={props.addSmth}
-            />
+            <Dialogs state={props.state} dispatch={props.dispatch} />
           )}
         />
         <Route
           path="/profile"
           render={() => (
-            <Profile
-              state={props.state}
-              onSmthChange={props.onSmthChange}
-              addSmth={props.addSmth}
-            />
+            <Profile state={props.state} dispatch={props.dispatch} />
           )}
         />
         <Route path="/news" component={News} />

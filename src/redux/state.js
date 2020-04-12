@@ -52,40 +52,42 @@ let store = {
       ],
     },
   },
+  _callSubscribers() {},
+
   getState() {
     return this._state;
   },
-  onSmthChange(nText) {
-    let newText = this._state.createRef.current.value;
-    if (nText == false) {
-      this._state.profilePage.newPostText = newText;
-    } else if (nText == true) {
-      this._state.dialogsPage.newMessageText = newText;
-    }
-    this._renderEntireTree(this._state);
-  },
-  addSmth(nPostMessage, condetion) {
-    let _newPostMessage = "";
-    if (condetion == false) {
-      _newPostMessage = {
-        id: 4,
-        likeCount: 0,
-        message: this._state.profilePage.newPostText,
-      };
-      this._state.profilePage.newPostText = "";
-    } else if (condetion == true) {
-      _newPostMessage = {
-        id: 1,
-        message: this._state.dialogsPage.newMessageText,
-      };
-      this._state.dialogsPage.newMessageText = "";
-    }
-    nPostMessage.push(_newPostMessage);
-    this._renderEntireTree(this._state);
-  },
-  _renderEntireTree() {},
   subscriber(observer) {
-    this._renderEntireTree = observer;
+    this._callSubscribers = observer;
+  },
+  dispatch(action) {
+    if (action.type === "ADD-SMTH") {
+      let _newPostMessage = "";
+      if (action.condition == false) {
+        _newPostMessage = {
+          id: 4,
+          likeCount: 0,
+          message: this._state.profilePage.newPostText,
+        };
+        this._state.profilePage.newPostText = "";
+      } else if (action.condition == true) {
+        _newPostMessage = {
+          id: 1,
+          message: this._state.dialogsPage.newMessageText,
+        };
+        this._state.dialogsPage.newMessageText = "";
+      }
+      action.nPostMessage.push(_newPostMessage);
+      this._callSubscribers(this._state);
+    } else if (action.type === "CHANGE-SMTH") {
+      let newText = this._state.createRef.current.value;
+      if (action.condition == false) {
+        this._state.profilePage.newPostText = newText;
+      } else if (action.condition == true) {
+        this._state.dialogsPage.newMessageText = newText;
+      }
+      this._callSubscribers(this._state);
+    }
   },
 };
 
