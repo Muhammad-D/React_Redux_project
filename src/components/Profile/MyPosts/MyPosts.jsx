@@ -1,6 +1,10 @@
 import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
+import {
+  actionCreaterAddSmth,
+  actionCreaterChangeSmth,
+} from "../../../redux/state";
 
 const MyPosts = (props) => {
   let postsElements = props.state.profilePage.posts.map((p, i) => (
@@ -8,18 +12,13 @@ const MyPosts = (props) => {
   ));
 
   let addPost = () => {
-    props.dispatch({
-      type: "ADD-SMTH",
-      condition: false,
-      nPostMessage: props.state.profilePage.posts,
-    });
+    const condition = false;
+    props.dispatch(actionCreaterAddSmth(condition));
   };
 
   let onPostChange = () => {
-    props.dispatch({
-      type: "CHANGE-SMTH",
-      condition: false,
-    });
+    const condition = false;
+    props.dispatch(actionCreaterChangeSmth(condition));
   };
 
   return (

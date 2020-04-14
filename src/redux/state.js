@@ -1,5 +1,8 @@
 import React from "react";
 
+const ADD_SMTH = "ADD-SMTH";
+const CHANGE_SMTH = "CHANGE-SMTH";
+
 let store = {
   _state: {
     createRef: React.createRef(),
@@ -61,7 +64,7 @@ let store = {
     this._callSubscribers = observer;
   },
   dispatch(action) {
-    if (action.type === "ADD-SMTH") {
+    if (action.type === ADD_SMTH) {
       let _newPostMessage = "";
       if (action.condition == false) {
         _newPostMessage = {
@@ -79,7 +82,7 @@ let store = {
       }
       action.nPostMessage.push(_newPostMessage);
       this._callSubscribers(this._state);
-    } else if (action.type === "CHANGE-SMTH") {
+    } else if (action.type === CHANGE_SMTH) {
       let newText = this._state.createRef.current.value;
       if (action.condition == false) {
         this._state.profilePage.newPostText = newText;
@@ -89,6 +92,32 @@ let store = {
       this._callSubscribers(this._state);
     }
   },
+};
+
+export const actionCreaterAddSmth = (condition1) => {
+  let cond, nPostMes;
+  if (condition1 == false) {
+    cond = false;
+    nPostMes = store.getState().profilePage.posts;
+  } else if (condition1 == true) {
+    cond = true;
+    nPostMes = store.getState().dialogsPage.messages;
+  }
+  return {
+    type: ADD_SMTH,
+    condition: cond,
+    nPostMessage: nPostMes,
+  };
+};
+
+export const actionCreaterChangeSmth = (condition1) => {
+  let cond;
+  if (condition1 == false) {
+    cond = false;
+  } else if (condition1 == true) {
+    cond = true;
+  }
+  return { type: CHANGE_SMTH, condition: cond };
 };
 
 window.store = store;

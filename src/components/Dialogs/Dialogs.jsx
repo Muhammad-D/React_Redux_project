@@ -4,6 +4,10 @@ import { NavLink } from "react-router-dom";
 import DialogItem from "./DiakogItem/DialogItem";
 import Message from "./Message/Message";
 import { render } from "@testing-library/react";
+import {
+  actionCreaterAddSmth,
+  actionCreaterChangeSmth,
+} from "../../redux/state";
 
 const Dialogs = (props) => {
   let dialogsElements = props.state.dialogsPage.dialogs.map((d, i) => (
@@ -15,18 +19,13 @@ const Dialogs = (props) => {
   ));
 
   let addMessage = () => {
-    props.dispatch({
-      type: "ADD-SMTH",
-      condition: true,
-      nPostMessage: props.state.dialogsPage.messages,
-    });
+    const condition = true;
+    props.dispatch(actionCreaterAddSmth(condition));
   };
 
   let onMessageChange = () => {
-    props.dispatch({
-      type: "CHANGE-SMTH",
-      condition: true,
-    });
+    const condition = true;
+    props.dispatch(actionCreaterChangeSmth(condition));
   };
 
   return (
