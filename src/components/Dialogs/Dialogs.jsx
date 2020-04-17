@@ -5,8 +5,8 @@ import DialogItem from "./DiakogItem/DialogItem";
 import Message from "./Message/Message";
 import { render } from "@testing-library/react";
 import {
-  actionCreaterAddSmth,
-  actionCreaterChangeSmth,
+  actionCreaterAddMessage,
+  actionCreaterChangeMessage,
 } from "../../redux/state";
 
 const Dialogs = (props) => {
@@ -19,13 +19,12 @@ const Dialogs = (props) => {
   ));
 
   let addMessage = () => {
-    const condition = true;
-    props.dispatch(actionCreaterAddSmth(condition));
+    props.dispatch(actionCreaterAddMessage());
   };
 
-  let onMessageChange = () => {
-    const condition = true;
-    props.dispatch(actionCreaterChangeSmth(condition));
+  let onMessageChange = (e) => {
+    let value = e.target.value;
+    props.dispatch(actionCreaterChangeMessage(value));
   };
 
   return (
@@ -36,8 +35,8 @@ const Dialogs = (props) => {
         <textarea
           onChange={onMessageChange}
           value={props.state.dialogsPage.newMessageText}
-          ref={props.state.createRef}
           className={s.textarea}
+          placeholder="Enter your message"
         ></textarea>
         <div>
           <button onClick={addMessage}>SEND Messsage</button>

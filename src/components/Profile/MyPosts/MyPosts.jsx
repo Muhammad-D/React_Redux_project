@@ -2,8 +2,8 @@ import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import {
-  actionCreaterAddSmth,
-  actionCreaterChangeSmth,
+  actionCreaterAddPost,
+  actionCreaterChangePost,
 } from "../../../redux/state";
 
 const MyPosts = (props) => {
@@ -12,13 +12,12 @@ const MyPosts = (props) => {
   ));
 
   let addPost = () => {
-    const condition = false;
-    props.dispatch(actionCreaterAddSmth(condition));
+    props.dispatch(actionCreaterAddPost());
   };
 
-  let onPostChange = () => {
-    const condition = false;
-    props.dispatch(actionCreaterChangeSmth(condition));
+  let onPostChange = (e) => {
+    let value = e.target.value;
+    props.dispatch(actionCreaterChangePost(value));
   };
 
   return (
@@ -28,8 +27,8 @@ const MyPosts = (props) => {
         <div>
           <textarea
             onChange={onPostChange}
-            ref={props.state.createRef}
             value={props.state.profilePage.newPostText}
+            placeholder="Enter your Post"
           />
         </div>
         <div>

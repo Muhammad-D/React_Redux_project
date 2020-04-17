@@ -1,11 +1,12 @@
 import React from "react";
 
-const ADD_SMTH = "ADD-SMTH";
-const CHANGE_SMTH = "CHANGE-SMTH";
+const ADD_NEW_POST = "ADD-NEW-POST";
+const ADD_NEW_MESSAGE = "ADD-NEW-MESSAGE";
+const CHANGE_POST = "CHANGE-POST";
+const CHANGE_MESSAGE = "CHANGE-MESSAGE";
 
 let store = {
   _state: {
-    createRef: React.createRef(),
     profilePage: {
       posts: [
         { id: 1, likeCount: 15, message: "Hi, how are you?" },
@@ -64,61 +65,55 @@ let store = {
     this._callSubscribers = observer;
   },
   dispatch(action) {
-    if (action.type === ADD_SMTH) {
-      let _newPostMessage = "";
-      if (action.condition == false) {
-        _newPostMessage = {
-          id: 4,
-          likeCount: 0,
-          message: this._state.profilePage.newPostText,
-        };
-        this._state.profilePage.newPostText = "";
-      } else if (action.condition == true) {
-        _newPostMessage = {
-          id: 1,
-          message: this._state.dialogsPage.newMessageText,
-        };
-        this._state.dialogsPage.newMessageText = "";
-      }
-      action.nPostMessage.push(_newPostMessage);
+    if (action.type === ADD_NEW_POST) {
+      let _newPost;
+      _newPost = {
+        id: 4,
+        likeCount: 0,
+        message: this._state.profilePage.newPostText,
+      };
+      this._state.profilePage.newPostText = "";
+      action.nPost.push(_newPost);
       this._callSubscribers(this._state);
-    } else if (action.type === CHANGE_SMTH) {
-      let newText = this._state.createRef.current.value;
-      if (action.condition == false) {
-        this._state.profilePage.newPostText = newText;
-      } else if (action.condition == true) {
-        this._state.dialogsPage.newMessageText = newText;
-      }
+    } else if (action.type === ADD_NEW_MESSAGE) {
+      let _newMessage = {
+        id: 1,
+        message: this._state.dialogsPage.newMessageText,
+      };
+      this._state.dialogsPage.newMessageText = "";
+      action.nMessage.push(_newMessage);
+      this._callSubscribers(this._state);
+    } else if (action.type === CHANGE_POST) {
+      let newText = action.newTextOfPost;
+      this._state.profilePage.newPostText = newText;
+      this._callSubscribers(this._state);
+    } else if (action.type === CHANGE_MESSAGE) {
+      let newText = action.newTextOfMessage;
+      this._state.dialogsPage.newMessageText = newText;
       this._callSubscribers(this._state);
     }
   },
 };
 
-export const actionCreaterAddSmth = (condition1) => {
-  let cond, nPostMes;
-  if (condition1 == false) {
-    cond = false;
-    nPostMes = store.getState().profilePage.posts;
-  } else if (condition1 == true) {
-    cond = true;
-    nPostMes = store.getState().dialogsPage.messages;
-  }
-  return {
-    type: ADD_SMTH,
-    condition: cond,
-    nPostMessage: nPostMes,
-  };
-};
+export const actionCreaterAddPost = () => ({
+  type: ADD_NEW_POST,
+  nPost: store.getState().profilePage.posts,
+});
 
-export const actionCreaterChangeSmth = (condition1) => {
-  let cond;
-  if (condition1 == false) {
-    cond = false;
-  } else if (condition1 == true) {
-    cond = true;
-  }
-  return { type: CHANGE_SMTH, condition: cond };
-};
+export const actionCreaterAddMessage = () => ({
+  type: ADD_NEW_MESSAGE,
+  nMessage: store.getState().dialogsPage.messages,
+});
+
+export const actionCreaterChangePost = (value) => ({
+  type: CHANGE_POST,
+  newTextOfPost: value,
+});
+
+export const actionCreaterChangeMessage = (value) => ({
+  type: CHANGE_MESSAGE,
+  newTextOfMessage: value,
+});
 
 window.store = store;
 
