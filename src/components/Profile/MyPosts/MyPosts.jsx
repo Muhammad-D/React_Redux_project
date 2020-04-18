@@ -7,17 +7,18 @@ import {
 } from "../../../redux/profile-reducer";
 
 const MyPosts = (props) => {
-  let postsElements = props.state.profilePage.posts.map((p, i) => (
+  debugger;
+  let postsElements = props.state.posts.map((p, i) => (
     <Post key={i.toString()} message={p.message} likes={p.likeCount} />
   ));
 
   let addPost = () => {
-    props.dispatch(actionCreaterAddPost());
+    props.addPost();
   };
 
   let onPostChange = (e) => {
     let value = e.target.value;
-    props.dispatch(actionCreaterChangePost(value));
+    props.onPostChange(value);
   };
 
   return (
@@ -27,7 +28,7 @@ const MyPosts = (props) => {
         <div>
           <textarea
             onChange={onPostChange}
-            value={props.state.profilePage.newPostText}
+            value={props.state.newPostText}
             placeholder="Enter your Post"
           />
         </div>

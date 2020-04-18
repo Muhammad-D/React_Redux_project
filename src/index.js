@@ -9,15 +9,15 @@ import * as serviceWorker from "./serviceWorker";
 const renderEntireTree = (state) => {
   ReactDOM.render(
     <BrowserRouter>
-      <App state={state} dispatch={store.dispatch.bind(store)} />
+      <App store={state} />
     </BrowserRouter>,
     document.getElementById("root")
   );
 };
 
-renderEntireTree(store.getState());
+renderEntireTree(store);
 
-store.subscribe(() => renderEntireTree(store.getState()));
+store.subscribe(() => renderEntireTree(store));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
