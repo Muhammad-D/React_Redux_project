@@ -1,4 +1,6 @@
-import React from "react";
+import profileReducer from "./profile-reducer";
+import dialogReducer from "./dialog-reducer";
+import sidebarReducer from "./sidebar-reducer";
 
 const ADD_NEW_POST = "ADD-NEW-POST";
 const ADD_NEW_MESSAGE = "ADD-NEW-MESSAGE";
@@ -36,7 +38,7 @@ let store = {
       ],
       newMessageText: "enter message",
     },
-    navbar: {
+    sidebar: {
       friends: [
         {
           name: "Chick",
@@ -65,44 +67,25 @@ let store = {
     this._callSubscribers = observer;
   },
   dispatch(action) {
-    if (action.type === ADD_NEW_POST) {
-      let _newPost;
-      _newPost = {
-        id: 4,
-        likeCount: 0,
-        message: this._state.profilePage.newPostText,
-      };
-      this._state.profilePage.newPostText = "";
-      action.nPost.push(_newPost);
-      this._callSubscribers(this._state);
-    } else if (action.type === ADD_NEW_MESSAGE) {
-      let _newMessage = {
-        id: 1,
-        message: this._state.dialogsPage.newMessageText,
-      };
-      this._state.dialogsPage.newMessageText = "";
-      action.nMessage.push(_newMessage);
-      this._callSubscribers(this._state);
-    } else if (action.type === CHANGE_POST) {
-      let newText = action.newTextOfPost;
-      this._state.profilePage.newPostText = newText;
-      this._callSubscribers(this._state);
-    } else if (action.type === CHANGE_MESSAGE) {
-      let newText = action.newTextOfMessage;
-      this._state.dialogsPage.newMessageText = newText;
-      this._callSubscribers(this._state);
-    }
+    this.getState().profilePage = profileReducer(
+      this.getState().profilePage,
+      action
+    );
+    this.getState().dialogsPage = dialogReducer(
+      this.getState().dialogsPage,
+      action
+    );
+    this.getState().sidebar = sidebarReducer(this.getState().sidebar, action);
+    this._callSubscribers(this.getState());
   },
 };
 
 export const actionCreaterAddPost = () => ({
   type: ADD_NEW_POST,
-  nPost: store.getState().profilePage.posts,
 });
 
 export const actionCreaterAddMessage = () => ({
   type: ADD_NEW_MESSAGE,
-  nMessage: store.getState().dialogsPage.messages,
 });
 
 export const actionCreaterChangePost = (value) => ({

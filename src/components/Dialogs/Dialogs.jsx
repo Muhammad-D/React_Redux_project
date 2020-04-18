@@ -1,13 +1,11 @@
 import React from "react";
 import s from "./Dialogs.module.css";
-import { NavLink } from "react-router-dom";
 import DialogItem from "./DiakogItem/DialogItem";
 import Message from "./Message/Message";
-import { render } from "@testing-library/react";
 import {
   actionCreaterAddMessage,
   actionCreaterChangeMessage,
-} from "../../redux/state";
+} from "../../redux/dialog-reducer";
 
 const Dialogs = (props) => {
   let dialogsElements = props.state.dialogsPage.dialogs.map((d, i) => (
