@@ -8,11 +8,11 @@ import {
 } from "../../redux/dialog-reducer";
 
 const Dialogs = (props) => {
-  let dialogsElements = props.state.dialogsPage.dialogs.map((d, i) => (
+  let dialogsElements = props.state.dialogPage.dialogs.map((d, i) => (
     <DialogItem key={i.toString()} name={d.name} id={d.id} />
   ));
 
-  let messagesElements = props.state.dialogsPage.messages.map((m, i) => (
+  let messagesElements = props.state.dialogPage.messages.map((m, i) => (
     <Message key={i} message={m.message} />
   ));
 
@@ -32,7 +32,7 @@ const Dialogs = (props) => {
       <div className={s.sendText}>
         <textarea
           onChange={onMessageChange}
-          value={props.state.dialogsPage.newMessageText}
+          value={props.state.dialogPage.newMessageText}
           className={s.textarea}
           placeholder="Enter your message"
         ></textarea>

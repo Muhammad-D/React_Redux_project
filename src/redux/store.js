@@ -63,7 +63,7 @@ let store = {
   getState() {
     return this._state;
   },
-  subscriber(observer) {
+  subscribe(observer) {
     this._callSubscribers = observer;
   },
   dispatch(action) {
