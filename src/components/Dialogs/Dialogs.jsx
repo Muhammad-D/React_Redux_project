@@ -2,17 +2,13 @@ import React from "react";
 import s from "./Dialogs.module.css";
 import DialogItem from "./DiakogItem/DialogItem";
 import Message from "./Message/Message";
-import {
-  actionCreaterAddMessage,
-  actionCreaterChangeMessage,
-} from "../../redux/dialog-reducer";
 
 const Dialogs = (props) => {
-  let dialogsElements = props.state.dialogs.map((d, i) => (
+  let dialogsElements = props.dialogPage.dialogs.map((d, i) => (
     <DialogItem key={i.toString()} name={d.name} id={d.id} />
   ));
 
-  let messagesElements = props.state.messages.map((m, i) => (
+  let messagesElements = props.dialogPage.messages.map((m, i) => (
     <Message key={i} message={m.message} />
   ));
 
@@ -32,7 +28,7 @@ const Dialogs = (props) => {
       <div className={s.sendText}>
         <textarea
           onChange={onMessageChange}
-          value={props.state.newMessageText}
+          value={props.dialogPage.newMessageText}
           className={s.textarea}
           placeholder="Enter your message"
         ></textarea>
