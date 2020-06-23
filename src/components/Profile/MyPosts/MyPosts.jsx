@@ -4,7 +4,7 @@ import Post from "./Post/Post";
 
 const MyPosts = (props) => {
   debugger;
-  let postsElements = props.profilePage.posts.map((p, i) => (
+  let postsElements = props.posts.map((p, i) => (
     <Post key={i.toString()} message={p.message} likes={p.likeCount} />
   ));
 
@@ -24,7 +24,7 @@ const MyPosts = (props) => {
         <div>
           <textarea
             onChange={onPostChange}
-            value={props.profilePage.newPostText}
+            value={props.newPostText}
             placeholder="Enter your Post"
           />
         </div>

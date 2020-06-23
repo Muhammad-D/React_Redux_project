@@ -4,11 +4,11 @@ import DialogItem from "./DiakogItem/DialogItem";
 import Message from "./Message/Message";
 
 const Dialogs = (props) => {
-  let dialogsElements = props.dialogPage.dialogs.map((d, i) => (
+  let dialogsElements = props.dialogs.map((d, i) => (
     <DialogItem key={i.toString()} name={d.name} id={d.id} />
   ));
 
-  let messagesElements = props.dialogPage.messages.map((m, i) => (
+  let messagesElements = props.messages.map((m, i) => (
     <Message key={i} message={m.message} />
   ));
 
@@ -28,7 +28,7 @@ const Dialogs = (props) => {
       <div className={s.sendText}>
         <textarea
           onChange={onMessageChange}
-          value={props.dialogPage.newMessageText}
+          value={props.newMessageText}
           className={s.textarea}
           placeholder="Enter your message"
         ></textarea>
