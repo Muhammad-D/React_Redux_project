@@ -19,6 +19,7 @@ const profileReducer = (state = initialState, action) => {
         likeCount: 0,
         message: state.newPostText,
       };
+
       return { ...state, posts: [...state.posts, _newPost], newPostText: "" };
     }
     case CHANGE_POST: {

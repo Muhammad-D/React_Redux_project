@@ -1,0 +1,35 @@
+.avaImg img {
+  height: 4rem;
+  border-radius: 0.8rem;
+}
+
+.status .statusChild {
+  display: inline-block;
+  margin: 0 1rem;
+}
+
+.appWrapper {
+  margin-bottom: 0.4rem;
+  display: grid;
+  grid-template-areas:
+    "i s"
+    "f s";
+  grid-template-rows: 3fr 1fr;
+  grid-template-columns: 1.5fr 10fr;
+  grid-gap: 0.3rem;
+}
+
+.avaImg {
+  grid-area: i;
+}
+
+.status {
+  grid-area: s;
+  border: 0.2rem solid black;
+  border-radius: 1rem;
+  margin-right: 15rem;
+}
+
+.followBtn {
+  grid-area: f;
+}
