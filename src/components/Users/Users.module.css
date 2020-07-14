@@ -33,3 +33,9 @@
 .followBtn {
   grid-area: f;
 }
+
+.pageCountSelector {
+  font-weight: bolder;
+  display: inline-block;
+  margin: 0 0.1rem;
+}

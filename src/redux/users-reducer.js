@@ -1,9 +1,14 @@
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
+const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+const SET_TOTAL_USERS_COUNT = " SET_TOTAL_USERS_COUNT";
 
 let initialState = {
   users: [],
+  pageSize: 100,
+  totalUsersCount: null,
+  currentPage: 1,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -33,7 +38,17 @@ const usersReducer = (state = initialState, action) => {
     case SET_USERS:
       return {
         ...state,
-        users: [...state.users, ...action.users],
+        users: [...action.users],
+      };
+    case SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.currentPage,
+      };
+    case SET_TOTAL_USERS_COUNT:
+      return {
+        ...state,
+        totalUsersCount: action.totalcount,
       };
     default:
       return state;
@@ -55,42 +70,11 @@ export const setUsersAC = (users) => ({
   type: SET_USERS,
   users,
 });
-
-// users: [
-//   {
-//     id: 1,
-//     followed: true,
-//     imgUrl:
-//       "https://cdn.pixabay.com/photo/2020/06/25/15/42/bulldog-french-5340020__340.jpg",
-//     fullName: "Edward",
-//     status: "blaBlaBla",
-//     location: { city: "Kiel", country: "Germany" },
-//   },
-//   {
-//     id: 2,
-//     followed: true,
-//     imgUrl:
-//       "https://cdn.pixabay.com/photo/2016/03/09/09/28/bear-1245807__340.jpg",
-//     fullName: "Luce",
-//     status: "to infinity and beyond",
-//     location: { city: "Tampere", country: "Finland" },
-//   },
-//   {
-//     id: 3,
-//     followed: false,
-//     imgUrl:
-//       "https://cdn.pixabay.com/photo/2019/09/16/14/45/sparrow-4481182__340.jpg",
-//     fullName: "Astrid",
-//     status: "Lalalala",
-//     location: { city: "Orebro", country: "Sweden" },
-//   },
-//   {
-//     id: 4,
-//     followed: false,
-//     imgUrl:
-//       "https://cdn.pixabay.com/photo/2020/06/16/18/15/dog-5306789__340.jpg",
-//     fullName: "Daan",
-//     status: "here I am",
-//     location: { city: "Groningen", country: "Netherlands" },
-//   },
-// ],
+export const setCurrentPageAC = (currentPage) => ({
+  type: SET_CURRENT_PAGE,
+  currentPage,
+});
+export const setTotalUsersCountAC = (totalcount) => ({
+  type: SET_TOTAL_USERS_COUNT,
+  totalcount,
+});
