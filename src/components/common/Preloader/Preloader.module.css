@@ -1,0 +1,7 @@
+.avaImg img {
+  height: 4rem;
+  border-radius: 0.8rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
