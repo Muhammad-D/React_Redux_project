@@ -20,7 +20,7 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         users: state.users.map((u) => {
           if (u.id === action.userId) {
-            return { ...u, followed: false };
+            return { ...u, followed: true };
           } else {
             return u;
           }
@@ -64,28 +64,28 @@ const usersReducer = (state = initialState, action) => {
 
 export default usersReducer;
 
-export const followAC = (userId) => ({
+export const follow = (userId) => ({
   type: FOLLOW,
   userId,
 });
 
-export const unfollowAC = (userId) => ({
+export const unfollow = (userId) => ({
   type: UNFOLLOW,
   userId,
 });
-export const setUsersAC = (users) => ({
+export const setUsers = (users) => ({
   type: SET_USERS,
   users,
 });
-export const setCurrentPageAC = (currentPage) => ({
+export const setCurrentPage = (currentPage) => ({
   type: SET_CURRENT_PAGE,
   currentPage,
 });
-export const setTotalUsersCountAC = (totalcount) => ({
+export const setTotalUsersCount = (totalcount) => ({
   type: SET_TOTAL_USERS_COUNT,
   totalcount,
 });
-export const setToggleFetcherAC = (isFetching) => ({
+export const setToggleFetcher = (isFetching) => ({
   type: TOGGLE_IS_FETCHING,
   isFetching,
 });
