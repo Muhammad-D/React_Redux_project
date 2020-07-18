@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./Preloader.module.css";
-import animation from "../../../assets/animation/04de2e31234507.564a1d23645bf.gif";
+import animation from "../../../assets/animation/tenor.gif";
 
 const Preloader = (props) => {
   return (
