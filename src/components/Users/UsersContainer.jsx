@@ -17,7 +17,10 @@ class UsersConteiner extends React.Component {
     this.props.setToggleFetcher(true);
     axios
       .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`
+        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`,
+        {
+          withCredentials: true,
+        }
       )
       .then((response) => {
         this.props.setToggleFetcher(false);
@@ -31,7 +34,10 @@ class UsersConteiner extends React.Component {
     this.props.setToggleFetcher(true);
     axios
       .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${pageNumber}`
+        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${pageNumber}`,
+        {
+          withCredentials: true,
+        }
       )
       .then((response) => {
         this.props.setToggleFetcher(false);
