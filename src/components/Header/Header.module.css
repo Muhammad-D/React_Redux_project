@@ -9,3 +9,10 @@
   margin: 0.4rem;
   margin-left: 0.7rem;
 }
+
+.loginBlock {
+  float: right;
+  color: white;
+  margin-top: 0.5rem;
+  margin-right: 1.8rem;
+}
