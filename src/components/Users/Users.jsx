@@ -3,6 +3,7 @@ import style from "./Users.module.css";
 import avatarImg from "../../assets/images/users.webp";
 import { NavLink } from "react-router-dom";
 import Axios from "axios";
+import { followAPI, unfollowAPI } from "../../assets/api/api";
 
 const Users = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -50,16 +51,10 @@ const Users = (props) => {
             {u.followed ? (
               <button
                 onClick={() => {
-                  Axios.delete(
-                    `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
-                    {
-                      withCredentials: true,
-                      headers: {
-                        "API-KEY": "01899cbc-f994-420f-95ae-a25b4312fe06",
-                      },
-                    }
-                  ).then((response) => {
-                    if (response.data.resultCode === 0) props.unfollow(u.id);
+                  props.setToggleFetcher(true);
+                  unfollowAPI.getStatus(u.id).then((data) => {
+                    props.setToggleFetcher(false);
+                    if (data.resultCode === 0) props.unfollow(u.id);
                   });
                 }}
               >
@@ -68,17 +63,10 @@ const Users = (props) => {
             ) : (
               <button
                 onClick={() => {
-                  Axios.post(
-                    `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
-                    {},
-                    {
-                      withCredentials: true,
-                      headers: {
-                        "API-KEY": "01899cbc-f994-420f-95ae-a25b4312fe06",
-                      },
-                    }
-                  ).then((response) => {
-                    if (response.data.resultCode === 0) props.follow(u.id);
+                  props.setToggleFetcher(true);
+                  followAPI.getStatus(u.id).then((data) => {
+                    props.setToggleFetcher(false);
+                    if (data.resultCode === 0) props.follow(u.id);
                   });
                 }}
               >

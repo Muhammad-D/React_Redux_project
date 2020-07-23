@@ -11,48 +11,33 @@ import {
 } from "../../redux/users-reducer";
 import * as axios from "axios";
 import Preloader from "../common/Preloader/Preloader";
+import { userAPI } from "../../assets/api/api";
 
 class UsersConteiner extends React.Component {
   componentDidMount() {
     this.props.setToggleFetcher(true);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`,
-        {
-          withCredentials: true,
-        }
-      )
-      .then((response) => {
+    userAPI
+      .getUsers(this.props.pageSize, this.props.currentPage)
+      .then((data) => {
         this.props.setToggleFetcher(false);
-        this.props.setUsers(response.data.items);
-        this.props.setTotalUsersCount(response.data.totalCount);
+        this.props.setUsers(data.items);
+        this.props.setTotalUsersCount(data.totalCount);
       });
   }
 
   onPageChanged = (pageNumber) => {
     this.props.setCurrentPage(pageNumber);
     this.props.setToggleFetcher(true);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${pageNumber}`,
-        {
-          withCredentials: true,
-        }
-      )
-      .then((response) => {
-        this.props.setToggleFetcher(false);
-        this.props.setUsers(response.data.items);
-      });
+    userAPI.getUsers(this.props.pageSize, pageNumber).then((data) => {
+      this.props.setToggleFetcher(false);
+      this.props.setUsers(data.items);
+    });
   };
 
   render() {
     return (
       <>
-        <div>
-          {this.props.isFetching ? (
-            <Preloader isFetching={this.props.isFetching} />
-          ) : null}
-        </div>
+        <div>{this.props.isFetching ? <Preloader /> : null}</div>
 
         <Users
           totalUsersCount={this.props.totalUsersCount}
@@ -62,6 +47,8 @@ class UsersConteiner extends React.Component {
           onPageChanged={this.onPageChanged}
           follow={this.props.follow}
           unfollow={this.props.unfollow}
+          setToggleFetcher={this.props.setToggleFetcher}
+          isFetching={this.props.isFetching}
         />
       </>
     );
