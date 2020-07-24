@@ -2,7 +2,6 @@ import React from "react";
 import style from "./Users.module.css";
 import avatarImg from "../../assets/images/users.webp";
 import { NavLink } from "react-router-dom";
-import Axios from "axios";
 import { followAPI, unfollowAPI } from "../../assets/api/api";
 
 const Users = (props) => {
@@ -50,11 +49,14 @@ const Users = (props) => {
           <div className={`${style.followBtn} ${style.appWrapperContent}`}>
             {u.followed ? (
               <button
+                disabled={props.followProgressing.some((id) => id === u.id)}
                 onClick={() => {
+                  props.setFollowProgressing(true, u.id);
                   props.setToggleFetcher(true);
                   unfollowAPI.getStatus(u.id).then((data) => {
                     props.setToggleFetcher(false);
                     if (data.resultCode === 0) props.unfollow(u.id);
+                    props.setFollowProgressing(false, u.id);
                   });
                 }}
               >
@@ -62,11 +64,15 @@ const Users = (props) => {
               </button>
             ) : (
               <button
+                disabled={props.followProgressing.some((id) => id === u.id)}
                 onClick={() => {
+                  props.setFollowProgressing(true, u.id);
+
                   props.setToggleFetcher(true);
                   followAPI.getStatus(u.id).then((data) => {
                     props.setToggleFetcher(false);
                     if (data.resultCode === 0) props.follow(u.id);
+                    props.setFollowProgressing(false, u.id);
                   });
                 }}
               >
