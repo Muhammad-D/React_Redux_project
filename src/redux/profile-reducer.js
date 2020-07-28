@@ -1,3 +1,5 @@
+import { profileAPI } from "../assets/api/api";
+
 const ADD_NEW_POST = "ADD-NEW-POST";
 const CHANGE_POST = "CHANGE-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
@@ -49,3 +51,12 @@ export const setUserProfile = (profile) => ({
   type: SET_USER_PROFILE,
   profile,
 });
+
+export const setUser = (userId) => {
+  return (dispatch) => {
+    if (!userId) userId = 2;
+    profileAPI.getProfile(userId).then((data) => {
+      dispatch(setUserProfile(data));
+    });
+  };
+};

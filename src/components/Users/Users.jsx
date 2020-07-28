@@ -51,13 +51,7 @@ const Users = (props) => {
               <button
                 disabled={props.followProgressing.some((id) => id === u.id)}
                 onClick={() => {
-                  props.setFollowProgressing(true, u.id);
-                  props.setToggleFetcher(true);
-                  unfollowAPI.getStatus(u.id).then((data) => {
-                    props.setToggleFetcher(false);
-                    if (data.resultCode === 0) props.unfollow(u.id);
-                    props.setFollowProgressing(false, u.id);
-                  });
+                  props.unfollow(u.id);
                 }}
               >
                 UNFOLLOWED
@@ -66,14 +60,7 @@ const Users = (props) => {
               <button
                 disabled={props.followProgressing.some((id) => id === u.id)}
                 onClick={() => {
-                  props.setFollowProgressing(true, u.id);
-
-                  props.setToggleFetcher(true);
-                  followAPI.getStatus(u.id).then((data) => {
-                    props.setToggleFetcher(false);
-                    if (data.resultCode === 0) props.follow(u.id);
-                    props.setFollowProgressing(false, u.id);
-                  });
+                  props.follow(u.id);
                 }}
               >
                 FOLLOWED
