@@ -12,6 +12,7 @@ let mapStateToProps = (state) => ({
   dialogs: state.dialogPage.dialogs,
   messages: state.dialogPage.messages,
   newMessageText: state.dialogPage.newMessageText,
+  isAuth: state.auth.isAuth,
 });
 
 let mapDispatchToProps = (dispatch) => ({
