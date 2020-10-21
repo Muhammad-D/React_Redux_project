@@ -1,9 +1,9 @@
 let initialState = {
   friends: [
     {
-      name: "Chick",
+      name: "Colibri",
       img:
-        "https://cdn.pixabay.com/photo/2014/05/20/21/20/easter-349026__340.jpg",
+        "https://cdn.pixabay.com/photo/2020/04/30/03/26/rufous-5111260_960_720.jpg",
     },
     {
       name: "Squirrel",

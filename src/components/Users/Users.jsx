@@ -17,6 +17,7 @@ const Users = (props) => {
         {pages.map((p) => {
           return (
             <span
+              key={p}
               className={
                 props.currentPage === p ? style.pageCountSelector : null
               }
