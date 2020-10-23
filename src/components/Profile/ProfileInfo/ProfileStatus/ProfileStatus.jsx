@@ -1,4 +1,5 @@
 import React from "react";
+import Preloader from "../../../common/Preloader/Preloader";
 
 export default class ProfileStatus extends React.Component {
   state = {
@@ -6,14 +7,14 @@ export default class ProfileStatus extends React.Component {
     status: this.props.status,
   };
 
-  activateEditMode = () => {
+  deactivateEditMode = () => {
     this.setState({
       editMode: false,
     });
     this.props.updataStatus(this.state.status);
   };
 
-  deactivateEditMode = () => {
+  activateEditMode = () => {
     this.setState({
       editMode: true,
     });
@@ -22,7 +23,19 @@ export default class ProfileStatus extends React.Component {
     this.setState({ status: e.currentTarget.value });
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    // debugger;
+    // let a = this.props;
+    // let b = this.state;
+    if (prevProps.status !== this.props.status) {
+      this.setState({ status: this.props.status });
+    }
+  }
+
   render() {
+    if (this.props.isFetching) {
+      return <Preloader />;
+    }
     return (
       <div>
         <div>
@@ -30,12 +43,12 @@ export default class ProfileStatus extends React.Component {
             <input
               onChange={this.onStatusChange}
               autoFocus={true}
-              onBlur={this.activateEditMode}
+              onBlur={this.deactivateEditMode}
               value={this.state.status}
               type="text"
             />
           ) : (
-            <span onDoubleClick={this.deactivateEditMode}>
+            <span onDoubleClick={this.activateEditMode}>
               {this.props.status || "-----"}
             </span>
           )}

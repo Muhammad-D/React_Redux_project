@@ -12,6 +12,7 @@ const Profile = (props) => {
           profile={props.profile}
           status={props.status}
           updataStatus={props.updataStatus}
+          isFetching={props.isFetching}
         />
         <MyPostsContainer />
       </div>

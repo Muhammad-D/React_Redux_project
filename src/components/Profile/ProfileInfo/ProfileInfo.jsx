@@ -17,13 +17,16 @@ const ProfileInfo = (props) => {
         <div>
           <img
             className={s.img}
-            src={props.userId == 9212 ? travel : props.profile.photos.large}
+            src={
+              props.profile.userId == 9212 ? travel : props.profile.photos.large
+            }
           />
         </div>
         <div>
           <ProfileStatus
             status={props.status}
             updataStatus={props.updataStatus}
+            isFetching={props.isFetching}
           />
         </div>
       </div>
