@@ -1,7 +1,8 @@
 import React from "react";
 import s from "./ProfileInfo.module.css";
 import Preloader from "../../common/Preloader/Preloader";
-import ProfileChange from "./ProfileChange/ProfileChange";
+import ProfileStatus from "./ProfileStatus/ProfileStatus";
+import travel from "../../../assets/images/travel_art_deco.jpg";
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -14,12 +15,18 @@ const ProfileInfo = (props) => {
       </div> */}
       <div>
         <div>
-          <img src={props.profile.photos.large} />
+          <img
+            className={s.img}
+            src={props.userId == 9212 ? travel : props.profile.photos.large}
+          />
         </div>
         <div>
-          <ProfileChange status='See you there'/>
-        </div>   
-   </div>
+          <ProfileStatus
+            status={props.status}
+            updataStatus={props.updataStatus}
+          />
+        </div>
+      </div>
     </div>
   );
 };

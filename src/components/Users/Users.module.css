@@ -34,6 +34,12 @@
   grid-area: f;
 }
 
+.pagginationStyle {
+  margin: 0 0.07rem;
+  border: solid black 0.001rem;
+  border-radius: 0.4rem;
+}
+
 .pageCountSelector {
   font-weight: bolder;
   display: inline-block;

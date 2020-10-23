@@ -19,7 +19,9 @@ const Users = (props) => {
             <span
               key={p}
               className={
-                props.currentPage === p ? style.pageCountSelector : null
+                props.currentPage === p
+                  ? style.pageCountSelector
+                  : style.pagginationStyle
               }
               onClick={(e) => {
                 props.onPageChanged(p);
