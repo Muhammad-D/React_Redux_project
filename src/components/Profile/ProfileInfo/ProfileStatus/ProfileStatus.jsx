@@ -24,9 +24,6 @@ export default class ProfileStatus extends React.Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    // debugger;
-    // let a = this.props;
-    // let b = this.state;
     if (prevProps.status !== this.props.status) {
       this.setState({ status: this.props.status });
     }
