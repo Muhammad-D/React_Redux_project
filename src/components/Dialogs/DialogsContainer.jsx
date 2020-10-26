@@ -1,4 +1,3 @@
-import React from "react";
 import Dialogs from "./Dialogs";
 import {
   actionCreaterAddMessage,
@@ -13,22 +12,17 @@ import { compose } from "redux";
 let mapStateToProps = (state) => ({
   dialogs: state.dialogPage.dialogs,
   messages: state.dialogPage.messages,
-  newMessageText: state.dialogPage.newMessageText,
 });
 
 let mapDispatchToProps = (dispatch) => ({
-  addMessage: () => dispatch(actionCreaterAddMessage()),
-  onMessageChange: (value) => dispatch(actionCreaterChangeMessage(value)),
+  addMessage: (newMessageText) =>
+    dispatch(actionCreaterAddMessage(newMessageText)),
 });
 
-
-
-
-export default compose(WithAuthReddirect, 
-                       connect(mapStateToProps, mapDispatchToProps)
-                       )(Dialogs);
-
-
+export default compose(
+  WithAuthReddirect,
+  connect(mapStateToProps, mapDispatchToProps)
+)(Dialogs);
 
 // const DialogsContainer = () => {
 //   return (

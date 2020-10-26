@@ -18,7 +18,9 @@ const ProfileInfo = (props) => {
           <img
             className={s.img}
             src={
-              props.profile.userId == 9212 ? travel : props.profile.photos.large
+              props.profile.userId === 9212
+                ? travel
+                : props.profile.photos.large
             }
           />
         </div>

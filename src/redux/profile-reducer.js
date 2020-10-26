@@ -1,7 +1,6 @@
 import { profileAPI } from "../assets/api/api";
 
 const ADD_NEW_POST = "ADD-NEW-POST";
-const CHANGE_POST = "CHANGE-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
 const SET_FETCHING = "SET_FETCHING";
@@ -12,7 +11,6 @@ let initialState = {
     { id: 2, likeCount: 4, message: "It's my first post" },
     { id: 3, likeCount: 8, message: "It's great to be here" },
   ],
-  newPostText: "enter your Post",
   profile: null,
   status: "",
   isFetching: false,
@@ -22,17 +20,16 @@ const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_NEW_POST: {
       let _newPost;
+      debugger;
       _newPost = {
         id: 4,
         likeCount: 0,
-        message: state.newPostText,
+        message: action.newPostText,
       };
 
-      return { ...state, posts: [...state.posts, _newPost], newPostText: "" };
+      return { ...state, posts: [...state.posts, _newPost] };
     }
-    case CHANGE_POST: {
-      return { ...state, newPostText: action.newTextOfPost };
-    }
+
     case SET_STATUS: {
       return { ...state, status: action.status };
     }
@@ -49,14 +46,11 @@ const profileReducer = (state = initialState, action) => {
 
 export default profileReducer;
 
-export const actionCreaterAddPost = () => ({
+export const actionCreaterAddPost = (newPostText) => ({
   type: ADD_NEW_POST,
+  newPostText,
 });
 
-export const actionCreaterChangePost = (value) => ({
-  type: CHANGE_POST,
-  newTextOfPost: value,
-});
 export const setUserProfile = (profile) => ({
   type: SET_USER_PROFILE,
   profile,

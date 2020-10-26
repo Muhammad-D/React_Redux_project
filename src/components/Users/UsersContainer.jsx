@@ -1,16 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Users from "./Users";
-import {
-  follow,
-  unfollow,
-  setUsers,
-  setCurrentPage,
-  setTotalUsersCount,
-  setToggleFetcher,
-  setFollowProgressing,
-  getUsers,
-} from "../../redux/users-reducer";
+import { follow, unfollow, getUsers } from "../../redux/users-reducer";
 import Preloader from "../common/Preloader/Preloader";
 import { compose } from "redux";
 import WithAuthReddirect from "../hoc/withAuthRedirect";
@@ -54,10 +45,10 @@ const mapStateToProps = (state) => ({
   followProgressing: state.usersPage.followProgressing,
 });
 
-
-export default compose(WithAuthReddirect,
-                       connect(mapStateToProps, {follow,unfollow,getUsers,})
-                       )(UsersConteiner)
+export default compose(
+  WithAuthReddirect,
+  connect(mapStateToProps, { follow, unfollow, getUsers })
+)(UsersConteiner);
 
 // const mapDispatchToProps = (dispatch) => ({
 //   follow: (usersId) => dispatch(followAC(usersId)),
