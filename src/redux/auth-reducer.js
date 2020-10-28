@@ -12,7 +12,7 @@ let initialState = {
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER_DATA: {
-      return { ...state, ...action.data, isAuth: true };
+      return { ...state, ...action.payload };
     }
     default:
       return state;
@@ -21,18 +21,36 @@ const authReducer = (state = initialState, action) => {
 
 export default authReducer;
 
-export const setAuthUserData = (id, email, login) => ({
+export const setAuthUserData = (id, email, login, isAuth) => ({
   type: SET_USER_DATA,
-  data: { id, email, login },
+  payload: { id, email, login, isAuth },
 });
 
 export const setAuth = () => {
   return (dispatch) => {
-    authAPI.getAuthorization().then((data) => {
-      if (data.resultCode === 0) {
-        let { id, email, login } = data.data;
-        dispatch(setAuthUserData(id, email, login));
+    authAPI.getAuthorization().then((res) => {
+      if (res.resultCode === 0) {
+        let { id, email, login } = res.data;
+        dispatch(setAuthUserData(id, email, login, true));
       }
     });
   };
+};
+
+export const logIn = (formData) => {
+  return (dispatch) => {
+    authAPI.logIn(formData).then((res) => {
+      if (res.resultCode === 0) {
+        dispatch(setAuth());
+      }
+    });
+  };
+};
+
+export const logOut = () => (dispatch) => {
+  authAPI.logOut().then((res) => {
+    if (res.resultCode === 0) {
+      dispatch(setAuthUserData(null, null, null, false));
+    }
+  });
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import { connect } from "react-redux";
-import { setAuth } from "../../redux/auth-reducer";
+import { setAuth, logOut } from "../../redux/auth-reducer";
 import { withRouter } from "react-router-dom";
 
 class HeaderContainer extends React.Component {
@@ -21,6 +21,6 @@ const mapStateToProps = (state) => ({
 
 let WithUrlDataContainerComponent = withRouter(HeaderContainer);
 
-export default connect(mapStateToProps, { setAuth })(
+export default connect(mapStateToProps, { setAuth, logOut })(
   WithUrlDataContainerComponent
 );
