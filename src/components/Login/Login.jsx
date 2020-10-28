@@ -1,6 +1,8 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { authAPI } from "../../assets/api/api";
+import { requiredField } from "../../utilities/validation/validation";
+import { InputArea } from "../common/FormsControlers/FormsControlers";
 
 const LoginForm = (props) => {
   return (
@@ -11,7 +13,8 @@ const LoginForm = (props) => {
             placeholder="Login"
             name="email"
             type="text"
-            component="input"
+            component={InputArea}
+            validate={[requiredField]}
           />
         </div>
         <div>
@@ -19,12 +22,18 @@ const LoginForm = (props) => {
             placeholder="Password"
             name="password"
             type="text"
-            component="input"
+            component={InputArea}
+            validate={[requiredField]}
           />
         </div>
         <div>
-          <Field type="checkbox" name="rememberMe" component="input" /> remember
-          me
+          <Field
+            type="checkbox"
+            name="rememberMe"
+            component={InputArea}
+            validate={[requiredField]}
+          />
+          {"remember me"}
         </div>
         <div>
           <button>LogIn</button>

@@ -20,7 +20,6 @@ const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_NEW_POST: {
       let _newPost;
-      debugger;
       _newPost = {
         id: 4,
         likeCount: 0,
