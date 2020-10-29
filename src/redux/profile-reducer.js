@@ -66,7 +66,6 @@ const setFetching = (isFetching) => ({
 
 export const setUser = (userId) => {
   return (dispatch) => {
-    if (!userId) userId = 9212;
     profileAPI.getProfile(userId).then((data) => {
       dispatch(setUserProfile(data));
     });
@@ -74,7 +73,6 @@ export const setUser = (userId) => {
 };
 
 export const getStatus = (userId) => {
-  if (!userId) userId = 9212;
   return (dispatch) => {
     profileAPI.getStatus(userId).then((res) => dispatch(setStatus(res)));
   };

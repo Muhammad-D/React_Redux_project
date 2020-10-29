@@ -11,8 +11,10 @@ import { compose } from "redux";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    this.props.setUser(this.props.match.params.userId);
-    this.props.getStatus(this.props.match.params.userId);
+    let userId = this.props.match.params.userId;
+    if (!userId) userId = this.props.userId;
+    this.props.setUser(userId);
+    this.props.getStatus(userId);
   }
   render() {
     return (
@@ -22,7 +24,7 @@ class ProfileContainer extends React.Component {
           profile={this.props.profile}
           status={this.props.status}
           updataStatus={this.props.updataStatus}
-          userId={this.props.match.params.userId}
+          userId={this.props.userId}
         />
       </>
     );
@@ -34,6 +36,7 @@ const mapStateToProps = (state) => ({
   status: state.profilePage.status,
   isFetching: state.profilePage.isFetching,
   isAuth: state.auth.isAuth,
+  userId: state.auth.id,
 });
 
 // let AuthRedirectComponent = WithAuthReddirect(ProfileContainer);

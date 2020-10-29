@@ -6,8 +6,10 @@ import { requiredField } from "../../utilities/validation/validation";
 import { InputArea } from "../common/FormsControlers/FormsControlers";
 import { logIn } from "../../redux/auth-reducer";
 import { Redirect } from "react-router-dom";
+import style from "./../common/FormsControlers/FormsControlers.module.css";
 
 const LoginForm = (props) => {
+  console.log(props);
   return (
     <>
       <form onSubmit={props.handleSubmit}>
@@ -38,6 +40,7 @@ const LoginForm = (props) => {
           />
           {"remember me"}
         </div>
+        {props.error && <div className={style.errorForm}>{props.error}</div>}
         <div>
           <button>LogIn</button>
         </div>
