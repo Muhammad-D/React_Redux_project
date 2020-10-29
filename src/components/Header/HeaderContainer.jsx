@@ -5,9 +5,6 @@ import { setAuth, logOut } from "../../redux/auth-reducer";
 import { withRouter } from "react-router-dom";
 
 class HeaderContainer extends React.Component {
-  componentDidMount() {
-    this.props.setAuth();
-  }
   render() {
     return <Header {...this.props} />;
   }
@@ -21,6 +18,6 @@ const mapStateToProps = (state) => ({
 
 let WithUrlDataContainerComponent = withRouter(HeaderContainer);
 
-export default connect(mapStateToProps, { setAuth, logOut })(
+export default connect(mapStateToProps, { logOut })(
   WithUrlDataContainerComponent
 );
