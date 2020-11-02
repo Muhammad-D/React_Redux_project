@@ -7,6 +7,12 @@ import store from "./redux/redux-store";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 
+store.dispatch({ type: "TESTING" });
+
+setInterval(() => {
+  store.dispatch({ type: "TESTING" });
+}, 1000);
+
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>

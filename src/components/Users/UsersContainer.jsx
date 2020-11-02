@@ -24,6 +24,7 @@ class UsersConteiner extends React.Component {
   };
 
   render() {
+    console.log("USER");
     return (
       <>
         <div>{this.props.isFetching ? <Preloader /> : null}</div>
@@ -44,14 +45,17 @@ class UsersConteiner extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  users: getUsers(state),
-  totalUsersCount: getTotalUsersCount(state),
-  pageSize: getPageSize(state),
-  currentPage: getCurrentPage(state),
-  isFetching: getIsFetching(state),
-  followProgressing: getFollowProgressing(state),
-});
+const mapStateToProps = (state) => {
+  console.log("MAP_STATE_TO_PROPS");
+  return {
+    users: getUsers(state),
+    totalUsersCount: getTotalUsersCount(state),
+    pageSize: getPageSize(state),
+    currentPage: getCurrentPage(state),
+    isFetching: getIsFetching(state),
+    followProgressing: getFollowProgressing(state),
+  };
+};
 
 export default compose(
   WithAuthReddirect,

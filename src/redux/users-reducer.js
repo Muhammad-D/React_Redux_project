@@ -15,10 +15,13 @@ let initialState = {
   currentPage: 1,
   isFetching: true,
   followProgressing: [],
+  TESTING: 23,
 };
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
+    case "TESTING":
+      return { ...state, TESTING: state.TESTING++ };
     case FOLLOW:
       return {
         ...state,
