@@ -1,10 +1,14 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import Preloader from "../../../common/Preloader/Preloader";
 
 const ProfileStatusWithHooks = ({ isFetching, status, updataStatus }) => {
   const [editMode, setEditMode] = useState(false);
   const [localStatus, setLocalStatus] = useState(status);
+  useEffect(() => {
+    setLocalStatus(status);
+  }, [status]);
 
   const onStatusChange = (e) => {
     setLocalStatus(e.currentTarget.value);
