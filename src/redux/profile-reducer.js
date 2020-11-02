@@ -35,9 +35,9 @@ const profileReducer = (state = initialState, action) => {
     case SET_USER_PROFILE: {
       return { ...state, profile: action.profile };
     }
-    // case SET_FETCHING: {
-    //   return { ...state, isFetching: action.isFetching };
-    // }
+    case SET_FETCHING: {
+      return { ...state, isFetching: action.isFetching };
+    }
     default:
       return state;
   }

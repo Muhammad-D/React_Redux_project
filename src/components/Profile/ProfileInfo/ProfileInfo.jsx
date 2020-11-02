@@ -1,8 +1,8 @@
 import React from "react";
 import s from "./ProfileInfo.module.css";
 import Preloader from "../../common/Preloader/Preloader";
-import ProfileStatus from "./ProfileStatus/ProfileStatus";
 import travel from "../../../assets/images/travel_art_deco.jpg";
+import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -25,7 +25,7 @@ const ProfileInfo = (props) => {
           />
         </div>
         <div>
-          <ProfileStatus
+          <ProfileStatusWithHooks
             status={props.status}
             updataStatus={props.updataStatus}
             isFetching={props.isFetching}
