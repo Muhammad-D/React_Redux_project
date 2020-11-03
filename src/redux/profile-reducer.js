@@ -4,6 +4,7 @@ const ADD_NEW_POST = "ADD-NEW-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
 const SET_FETCHING = "SET_FETCHING";
+const DELETE_POST = "DELETE_POST";
 
 let initialState = {
   posts: [
@@ -38,6 +39,12 @@ const profileReducer = (state = initialState, action) => {
     case SET_FETCHING: {
       return { ...state, isFetching: action.isFetching };
     }
+    case DELETE_POST: {
+      return {
+        ...state,
+        posts: state.posts.filter((item) => item.id !== action.postId),
+      };
+    }
     default:
       return state;
   }
@@ -45,6 +52,10 @@ const profileReducer = (state = initialState, action) => {
 
 export default profileReducer;
 
+export const deletePost = (postId) => ({
+  type: DELETE_POST,
+  postId,
+});
 export const actionCreaterAddPost = (newPostText) => ({
   type: ADD_NEW_POST,
   newPostText,
