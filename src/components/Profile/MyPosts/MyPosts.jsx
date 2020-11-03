@@ -10,7 +10,7 @@ import Post from "./Post/Post";
 
 const maxLength10 = maxLengthCreator(10);
 
-const MyPosts = (props) => {
+const MyPosts = React.memo((props) => {
   let postsElements = props.posts.map((p, i) => (
     <Post key={i.toString()} message={p.message} likes={p.likeCount} />
   ));
@@ -19,6 +19,8 @@ const MyPosts = (props) => {
     props.addPost(formData.newPostBody);
   };
 
+  console.log("RENDER");
+
   return (
     <div>
       <h3>My post</h3>
@@ -26,7 +28,7 @@ const MyPosts = (props) => {
       <div className={s.posts}>{postsElements}</div>
     </div>
   );
-};
+});
 
 const MyPostsForm = (props) => {
   return (
