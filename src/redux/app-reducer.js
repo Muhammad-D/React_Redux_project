@@ -1,6 +1,6 @@
 import { setAuth } from "./auth-reducer";
 
-const INITIALIZATION_SUCCESS = "INITIALIZED_SUCCESED";
+const INITIALIZATION_SUCCESS = "social-network/app/INITIALIZED_SUCCESED";
 
 let initialState = {
   initialized: false,
@@ -24,7 +24,10 @@ const initializedSuccess = () => ({
 
 export const globalInitializationSuccess = () => (dispatch) => {
   let propmise = dispatch(setAuth());
-  propmise.then(() => dispatch(initializedSuccess()));
+
+  Promise.all([propmise]).then((res) => {
+    dispatch(initializedSuccess());
+  });
 };
 
 export default appReducer;

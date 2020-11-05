@@ -16,11 +16,13 @@ import {
 
 class UsersConteiner extends React.Component {
   componentDidMount() {
-    this.props.requestUsers(this.props.pageSize, this.props.currentPage);
+    const { pageSize, currentPage, requestUsers } = this.props;
+    requestUsers(pageSize, currentPage);
   }
 
   onPageChanged = (pageNumber) => {
-    this.props.requestUsers(this.props.pageSize, pageNumber);
+    const { pageSize, requestUsers } = this.props;
+    requestUsers(pageSize, pageNumber);
   };
 
   render() {
@@ -59,13 +61,3 @@ export default compose(
   WithAuthReddirect,
   connect(mapStateToProps, { follow, unfollow, requestUsers })
 )(UsersConteiner);
-
-// const mapDispatchToProps = (dispatch) => ({
-//   follow: (usersId) => dispatch(followAC(usersId)),
-//   unfollow: (usersId) => dispatch(unfollowAC(usersId)),
-//   setUsers: (users) => dispatch(setUsersAC(users)),
-//   setTotalUsersCount: (totalCount) =>
-//     dispatch(setTotalUsersCountAC(totalCount)),
-//   setCurrentPage: (currentPage) => dispatch(setCurrentPageAC(currentPage)),
-//   setToggleFetcher: (isfatching) => dispatch(setToggleFetcherAC(isfatching)),
-// });

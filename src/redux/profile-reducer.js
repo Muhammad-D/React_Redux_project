@@ -1,10 +1,10 @@
 import { profileAPI } from "../assets/api/api";
 
-const ADD_NEW_POST = "ADD-NEW-POST";
-const SET_USER_PROFILE = "SET_USER_PROFILE";
-const SET_STATUS = "SET_STATUS";
-const SET_FETCHING = "SET_FETCHING";
-const DELETE_POST = "DELETE_POST";
+const ADD_NEW_POST = "social-network/profile/ADD-NEW-POST";
+const SET_USER_PROFILE = "social-network/profile/SET_USER_PROFILE";
+const SET_STATUS = "social-network/profile/SET_STATUS";
+const SET_FETCHING = "social-network/profile/SET_FETCHING";
+const DELETE_POST = "social-network/profile/DELETE_POST";
 
 let initialState = {
   posts: [
@@ -76,27 +76,27 @@ const setFetching = (isFetching) => ({
 });
 
 export const setUser = (userId) => {
-  return (dispatch) => {
-    profileAPI.getProfile(userId).then((data) => {
-      dispatch(setUserProfile(data));
-    });
+  return async (dispatch) => {
+    let data = await profileAPI.getProfile(userId);
+    dispatch(setUserProfile(data));
   };
 };
 
 export const getStatus = (userId) => {
-  return (dispatch) => {
-    profileAPI.getStatus(userId).then((res) => dispatch(setStatus(res)));
+  return async (dispatch) => {
+    let res = await profileAPI.getStatus(userId);
+    dispatch(setStatus(res));
   };
 };
 
 export const updataStatus = (status) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(setFetching(true));
-    profileAPI.updataStatus(status).then((res) => {
-      if (res.resultCode === 0) {
-        dispatch(setFetching(false));
-        dispatch(setStatus(status));
-      }
-    });
+
+    let res = await profileAPI.updataStatus(status);
+    if (res.resultCode === 0) {
+      dispatch(setFetching(false));
+      dispatch(setStatus(status));
+    }
   };
 };

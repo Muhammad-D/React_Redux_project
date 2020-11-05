@@ -1,7 +1,7 @@
 import { stopSubmit } from "redux-form";
 import { authAPI } from "../assets/api/api";
 
-const SET_USER_DATA = "SET_USER_DATA";
+const SET_USER_DATA = "social-network/auth/SET_USER_DATA";
 
 let initialState = {
   id: null,
@@ -28,34 +28,31 @@ export const setAuthUserData = (id, email, login, isAuth) => ({
 });
 
 export const setAuth = () => {
-  return (dispatch) => {
-    return authAPI.getAuthorization().then((res) => {
-      if (res.resultCode === 0) {
-        let { id, email, login } = res.data;
-        dispatch(setAuthUserData(id, email, login, true));
-      }
-    });
+  return async (dispatch) => {
+    let res = await authAPI.getAuthorization();
+    if (res.resultCode === 0) {
+      let { id, email, login } = res.data;
+      dispatch(setAuthUserData(id, email, login, true));
+    }
+    return res;
   };
 };
 
 export const logIn = (formData) => {
-  return (dispatch) => {
-    authAPI.logIn(formData).then((res) => {
-      if (res.resultCode === 0) {
-        dispatch(setAuth());
-      } else {
-        debugger;
-        let message = res.resultCode > 0 ? res.messages["0"] : "SOME ERROR";
-        dispatch(stopSubmit("login", { _error: message }));
-      }
-    });
+  return async (dispatch) => {
+    let res = await authAPI.logIn(formData);
+    if (res.resultCode === 0) {
+      dispatch(setAuth());
+    } else {
+      let message = res.resultCode > 0 ? res.messages["0"] : "SOME ERROR";
+      dispatch(stopSubmit("login", { _error: message }));
+    }
   };
 };
 
-export const logOut = () => (dispatch) => {
-  authAPI.logOut().then((res) => {
-    if (res.resultCode === 0) {
-      dispatch(setAuthUserData(null, null, null, false));
-    }
-  });
+export const logOut = () => async (dispatch) => {
+  let res = await authAPI.logOut();
+  if (res.resultCode === 0) {
+    dispatch(setAuthUserData(null, null, null, false));
+  }
 };

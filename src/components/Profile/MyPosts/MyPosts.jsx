@@ -19,8 +19,6 @@ const MyPosts = React.memo((props) => {
     props.addPost(formData.newPostBody);
   };
 
-  console.log("RENDER");
-
   return (
     <div>
       <h3>My post</h3>
