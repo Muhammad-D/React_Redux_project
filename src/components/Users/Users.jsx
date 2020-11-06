@@ -13,7 +13,7 @@ const Users = ({
   return (
     <div>
       <Pagination
-        totalUsersCount={totalUsersCount}
+        totalItemsCount={totalUsersCount}
         pageSize={pageSize}
         currentPage={currentPage}
         onPageChanged={onPageChanged}

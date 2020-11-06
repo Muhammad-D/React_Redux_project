@@ -11,7 +11,7 @@ const FOLLOW_PROGRESSING = "social-network/users/FOLLOW_PROGRESSING";
 
 let initialState = {
   users: [],
-  pageSize: 100,
+  pageSize: 20,
   totalUsersCount: null,
   currentPage: 1,
   isFetching: true,
