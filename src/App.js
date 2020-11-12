@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import "./App.css";
-import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
+import { HashRouter, Route, Switch, withRouter } from "react-router-dom";
 import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
@@ -61,11 +61,11 @@ const AppContainer = compose(
 
 const AppWrapper = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Provider store={store}>
         <AppContainer />
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 export default AppWrapper;
