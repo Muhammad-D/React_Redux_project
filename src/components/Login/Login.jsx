@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import { authAPI } from "../../api/api";
+import { authAPI } from "../../assets/api/api";
 import { requiredField } from "../../utilities/validation/validation";
 import {
   FieldCreater,
