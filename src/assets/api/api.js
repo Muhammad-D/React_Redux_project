@@ -57,6 +57,16 @@ export const profileAPI = {
     const res = await instance.put(`profile/status`, { status });
     return res.data;
   },
+  async uploadPhotos(photos) {
+    const formData = new FormData();
+    formData.append("image", photos);
+    const res = await instance.put(`profile/photo`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    return res.data;
+  },
 };
 
 // import * as Axios from "axios";

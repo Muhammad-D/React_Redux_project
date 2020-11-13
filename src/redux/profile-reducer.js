@@ -5,6 +5,7 @@ const SET_USER_PROFILE = "social-network/profile/SET_USER_PROFILE";
 const SET_STATUS = "social-network/profile/SET_STATUS";
 const SET_FETCHING = "social-network/profile/SET_FETCHING";
 const DELETE_POST = "social-network/profile/DELETE_POST";
+const UPLOAD_PHOTOS_SUCCESS = "social-network/profile/UPLOAD_PHOTOS_SUCCESS";
 
 let initialState = {
   posts: [
@@ -19,32 +20,30 @@ let initialState = {
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_NEW_POST: {
+    case ADD_NEW_POST:
       let _newPost;
       _newPost = {
         id: 4,
         likeCount: 0,
         message: action.newPostText,
       };
-
       return { ...state, posts: [...state.posts, _newPost] };
-    }
-
-    case SET_STATUS: {
+    case SET_STATUS:
       return { ...state, status: action.status };
-    }
-    case SET_USER_PROFILE: {
+    case SET_USER_PROFILE:
       return { ...state, profile: action.profile };
-    }
-    case SET_FETCHING: {
+    case SET_FETCHING:
       return { ...state, isFetching: action.isFetching };
-    }
-    case DELETE_POST: {
+    case DELETE_POST:
       return {
         ...state,
         posts: state.posts.filter((item) => item.id !== action.postId),
       };
-    }
+    case UPLOAD_PHOTOS_SUCCESS:
+      return {
+        ...state,
+        profile: { ...state.profile, photos: action.payload },
+      };
     default:
       return state;
   }
@@ -74,11 +73,17 @@ const setFetching = (isFetching) => ({
   type: SET_FETCHING,
   isFetching,
 });
+const uploadPhotosSuccess = (photos) => ({
+  type: UPLOAD_PHOTOS_SUCCESS,
+  payload: photos,
+});
 
 export const setUser = (userId) => {
   return async (dispatch) => {
+    dispatch(setFetching(true));
     let data = await profileAPI.getProfile(userId);
     dispatch(setUserProfile(data));
+    dispatch(setFetching(false));
   };
 };
 
@@ -99,4 +104,9 @@ export const updataStatus = (status) => {
       dispatch(setStatus(status));
     }
   };
+};
+
+export const uploadPhotos = (photos) => async (dispatch) => {
+  const res = await profileAPI.uploadPhotos(photos);
+  if (res.resultCode === 0) dispatch(uploadPhotosSuccess(res.data.photos));
 };
