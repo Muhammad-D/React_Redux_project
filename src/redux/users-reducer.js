@@ -1,4 +1,4 @@
-import { userAPI } from "../assets/api/api";
+import { userAPI } from "../api/api";
 import { updateObjectInArray } from "../utilities/object-creater/object-creater";
 
 const FOLLOW = "social-network/users/FOLLOW";

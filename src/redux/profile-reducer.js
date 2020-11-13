@@ -1,4 +1,4 @@
-import { profileAPI } from "../assets/api/api";
+import { profileAPI } from "../api/api";
 
 const ADD_NEW_POST = "social-network/profile/ADD-NEW-POST";
 const SET_USER_PROFILE = "social-network/profile/SET_USER_PROFILE";
