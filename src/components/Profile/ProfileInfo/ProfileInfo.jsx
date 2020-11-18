@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import s from "./ProfileInfo.module.css";
 import Preloader from "../../common/Preloader/Preloader";
 import travel from "../../../assets/images/travel_art_deco.jpg";
 import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
 import mockImg from "../../../assets/images/users.webp";
+import ProfileData from "./ProfileData/ProfileData";
+import ProfileDataForm from "./ProfileData/ProfileDataForm/ProfileDataForm";
 
 const ProfileInfo = ({
   profile,
@@ -14,6 +16,8 @@ const ProfileInfo = ({
   isOwner,
   uploadPhotos,
 }) => {
+  console.log(profile);
+  const [editMode, setEditMode] = useState(false);
   const onUploadPhotos = (e) => {
     if (e.target.files.length) uploadPhotos(e.target.files["0"]);
   };
@@ -36,6 +40,22 @@ const ProfileInfo = ({
             </div>
           )}
         </div>
+        {!editMode ? (
+          <ProfileData profile={profile} />
+        ) : (
+          <ProfileDataForm
+            initialValues={profile}
+            profile={profile}
+            setEditMode={setEditMode}
+          />
+        )}
+        {editMode ? (
+          ""
+        ) : (
+          <div>
+            <button onClick={(e) => setEditMode(true)}>EDIT</button>
+          </div>
+        )}
         <div>
           <ProfileStatusWithHooks
             status={status}

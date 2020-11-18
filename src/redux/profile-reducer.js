@@ -1,3 +1,4 @@
+import { stopSubmit } from "redux-form";
 import { profileAPI } from "../assets/api/api";
 
 const ADD_NEW_POST = "social-network/profile/ADD-NEW-POST";
@@ -109,4 +110,30 @@ export const updataStatus = (status) => {
 export const uploadPhotos = (photos) => async (dispatch) => {
   const res = await profileAPI.uploadPhotos(photos);
   if (res.resultCode === 0) dispatch(uploadPhotosSuccess(res.data.photos));
+};
+export const updateProfileData = (formData) => async (dispatch, getState) => {
+  console.log(formData);
+  const userId = getState().auth.id;
+  const res = await profileAPI.updateProfileData(formData);
+  if (res.resultCode === 0) {
+    dispatch(setUser(userId));
+  } else {
+    const message = res.messages["0"];
+    const objectName = message.slice(
+      message.indexOf("(") + 1,
+      message.indexOf("-")
+    );
+    const propName = message.slice(
+      message.indexOf(">") + 1,
+      message.indexOf(")")
+    );
+    const objectNameToLowerCase = objectName.toLowerCase();
+    const propNameToLowerCase = propName.toLowerCase();
+    dispatch(
+      stopSubmit("edit-profile", {
+        [objectNameToLowerCase]: { [propNameToLowerCase]: message },
+      })
+    );
+    return Promise.reject(message);
+  }
 };

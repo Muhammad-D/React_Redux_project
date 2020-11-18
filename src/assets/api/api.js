@@ -67,6 +67,10 @@ export const profileAPI = {
     });
     return res.data;
   },
+  async updateProfileData(formData) {
+    const res = await instance.put(`profile`, formData);
+    return res.data;
+  },
 };
 
 // import * as Axios from "axios";
