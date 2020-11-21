@@ -30,11 +30,16 @@ export const authAPI = {
     const res = await instance.get(`auth/me`);
     return res.data;
   },
-  async logIn({ email, password, rememberMe }) {
+  async getCaptchaUrl() {
+    const res = await instance.get(`security/get-captcha-url`);
+    return res.data.url;
+  },
+  async logIn({ email, password, rememberMe = false, captcha = null }) {
     const res = await instance.post(`auth/login`, {
       email,
       password,
       rememberMe,
+      captcha,
     });
     return res.data;
   },

@@ -16,7 +16,6 @@ const ProfileInfo = ({
   isOwner,
   uploadPhotos,
 }) => {
-  console.log(profile);
   const [editMode, setEditMode] = useState(false);
   const onUploadPhotos = (e) => {
     if (e.target.files.length) uploadPhotos(e.target.files["0"]);

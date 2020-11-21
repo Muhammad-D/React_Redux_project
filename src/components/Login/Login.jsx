@@ -11,7 +11,7 @@ import { logIn } from "../../redux/auth-reducer";
 import { Redirect } from "react-router-dom";
 import style from "./../common/FormsControlers/FormsControlers.module.css";
 
-const LoginForm = ({ handleSubmit, error }) => {
+const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -36,6 +36,16 @@ const LoginForm = ({ handleSubmit, error }) => {
           props={{ type: "checkbox" }}
           text="remember me"
         />
+        {captchaUrl && <img src={captchaUrl} />}
+        {captchaUrl && (
+          <FieldCreater
+            placeholder="Enter text you see in pop-window"
+            name="captcha"
+            component={InputArea}
+            validate={[requiredField]}
+            props={{ type: "text" }}
+          />
+        )}
         {error && <div className={style.errorForm}>{error}</div>}
         <div>
           <button>LogIn</button>
@@ -58,7 +68,10 @@ class Login extends React.Component {
     ) : (
       <>
         <h1>LOGIN</h1>
-        <LoginReduxForm onSubmit={this.reduxOnSubmit} />
+        <LoginReduxForm
+          onSubmit={this.reduxOnSubmit}
+          captchaUrl={this.props.captchaUrl}
+        />
       </>
     );
   }
@@ -66,6 +79,7 @@ class Login extends React.Component {
 
 let mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
+  captchaUrl: state.auth.captchaUrl,
 });
 
 export default connect(mapStateToProps, { logIn })(Login);
