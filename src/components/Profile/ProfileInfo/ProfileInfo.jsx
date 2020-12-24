@@ -6,6 +6,7 @@ import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
 import mockImg from "../../../assets/images/users.webp";
 import ProfileData from "./ProfileData/ProfileData";
 import ProfileDataForm from "./ProfileData/ProfileDataForm/ProfileDataForm";
+import backgroundImage from "../../../assets/images/background-image.jpg";
 
 const ProfileInfo = ({
   profile,
@@ -28,6 +29,7 @@ const ProfileInfo = ({
     <div className={s.content}>
       <div>
         <div>
+          <img src={backgroundImage} className={s.backgroundImage} />
           <img
             className={s.img}
             // src={profile.userId === userId ? travel : profile.photos.large}

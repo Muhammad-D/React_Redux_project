@@ -1,0 +1,75 @@
+@import "../../styles/variables.scss";
+.nav-bar {
+  grid-area: 1/1/-1 / span 1;
+  display: flex;
+  flex-direction: column;
+  background-color: $primary;
+}
+
+.nav-bar__logo {
+  max-height: 100%;
+  max-width: 100%;
+  padding: 16px;
+  object-fit: contain;
+  background-color: $dark;
+}
+
+.nav-bar__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: calc(100% - 80px);
+  padding: 2rem 0.4rem 0;
+  font-size: 0.5rem;
+}
+
+.nav-bar__item {
+  margin-bottom: 2rem;
+  transition: transform 2s linear;
+  // box-shadow: 0 16px 30px -20px rgba(58, 46, 68, 1);
+}
+
+.nav-bar__item a {
+  color: $secondary;
+  transform: scale(1);
+  &:hover {
+    color: $purple;
+  }
+}
+
+.nav-bar__active-link {
+  display: flex;
+  align-items: center;
+  background-color: rgba($purple, 0.5);
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+  position: relative;
+  box-shadow: 5px 10px 6px -6px rgba($purple, 0.5),
+    -5px 10px 6px -6px rgba($purple, 0.5), 0 10px 6px -6px rgba($purple, 0.5),
+    0 10px 6px -6px rgba($purple, 0.5);
+}
+
+/* Inner layout */
+
+/* 11 */
+
+/* SubNavFriends */
+
+// .subNavbarFriends {
+//   font-size: 0.8rem;
+//   margin: 0.4rem;
+//   padding: 0.2rem;
+//   border-radius: 0.4rem;
+//   background-color: rgb(116, 195, 116);
+// }
+
+// .navFriends {
+//   display: flex;
+//   flex-wrap: wrap;
+// }
+
+// .subNavbarFriends .title {
+//   text-align: center;
+//   font-weight: bolder;
+// }

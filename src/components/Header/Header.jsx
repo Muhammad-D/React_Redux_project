@@ -1,12 +1,11 @@
 import React from "react";
-import style from "./Header.module.css";
+import "./Header.scss";
 import { NavLink } from "react-router-dom";
 
 const Header = ({ isAuth, login, email, logOut }) => {
   return (
-    <header className={style.header}>
-      <img src="https://cdn.pixabay.com/photo/2017/01/27/14/25/coffee-2013192_960_720.png" />
-      <div className={style.loginBlock}>
+    <header className="header">
+      <div className="header__auth-block">
         {isAuth ? (
           <div>
             <div>{login}</div>

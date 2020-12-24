@@ -1,6 +1,12 @@
 import React, { lazy, Suspense } from "react";
-import "./App.css";
-import { HashRouter, Route, Switch, withRouter } from "react-router-dom";
+import "./App.scss";
+import {
+  BrowserRouter,
+  HashRouter,
+  Route,
+  Switch,
+  withRouter,
+} from "react-router-dom";
 import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
@@ -32,7 +38,7 @@ class App extends React.Component {
       <div className="app-wrapper">
         <HeaderContainer />
         <NavbarContainer />
-        <div className="app-wrapper-content">
+        <div className="app-wrapper__content">
           <Suspense fallback={<div>Loading...</div>}>
             <Switch>
               <Route path="/dialogs" component={DialogsContainer} />
@@ -41,6 +47,10 @@ class App extends React.Component {
               <Route path="/music" component={Music} />
               <Route path="/settings" component={Settings} />
               <Route path="/users" render={() => <UsersContainer />} />
+              <Route
+                path="/login/facebook"
+                render={() => <div>Facebook</div>}
+              />
               <Route path="/login" component={Login} />
             </Switch>
           </Suspense>
@@ -61,11 +71,11 @@ const AppContainer = compose(
 
 const AppWrapper = () => {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Provider store={store}>
         <AppContainer />
       </Provider>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 export default AppWrapper;
