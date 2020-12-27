@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import "../../common_styles/config";
 .nav-bar {
   grid-area: 1/1/-1 / span 1;
   display: flex;
@@ -27,27 +27,64 @@
 .nav-bar__item {
   margin-bottom: 2rem;
   transition: transform 2s linear;
-  // box-shadow: 0 16px 30px -20px rgba(58, 46, 68, 1);
+  position: relative;
+  &:hover {
+    .nav-bar__tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
 }
 
 .nav-bar__item a {
   color: $secondary;
   transform: scale(1);
+  @include transition-ease;
+
   &:hover {
     color: $purple;
   }
 }
 
 .nav-bar__active-link {
-  display: flex;
-  align-items: center;
+  @include flexCenter(row);
   background-color: rgba($purple, 0.5);
   border-radius: 0.2rem;
   padding: 0.2rem;
-  position: relative;
   box-shadow: 5px 10px 6px -6px rgba($purple, 0.5),
     -5px 10px 6px -6px rgba($purple, 0.5), 0 10px 6px -6px rgba($purple, 0.5),
     0 10px 6px -6px rgba($purple, 0.5);
+  .nav-bar__tooltip {
+    left: 125%;
+  }
+}
+
+.nav-bar__tooltip {
+  visibility: hidden;
+  font-size: 0.9rem;
+  width: 80px;
+  display: inline-block;
+  background-color: #555;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+  border-radius: 8px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 5%;
+  left: 120%;
+  opacity: 0;
+  transition: opacity 0.4s;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 31%;
+    left: -7%;
+    margin-left: -5px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent #555 transparent transparent;
+  }
 }
 
 /* Inner layout */

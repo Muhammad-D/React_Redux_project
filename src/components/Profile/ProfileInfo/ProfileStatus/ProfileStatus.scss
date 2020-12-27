@@ -1,0 +1,21 @@
+@import "../../../../common_styles/config";
+
+.profile-status {
+  margin-bottom: 1.5vw;
+  margin-left: 1vw;
+  padding: 4px 7px 6px;
+  background-color: rgba($purple, 1);
+  display: inline-block;
+  border-radius: 7px;
+  width: fit-content;
+  color: $light;
+  font-family: $main-font;
+  font-size: small;
+  & > input {
+    background-color: rgba($purple, 0.8);
+    outline: none;
+    border: none;
+    width: 7vw;
+    color: $light;
+  }
+}

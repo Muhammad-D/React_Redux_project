@@ -1,12 +1,16 @@
 import React from "react";
-import s from "./Profile.module.css";
+import "./Profile.scss";
+
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
+import backgroundImage from "../../assets/images/background-image.jpg";
+
 const Profile = (props) => {
   return (
-    <div className={s.content}>
-      <div>
+    <div className="profile">
+      <img src={backgroundImage} className="profile__background-img" />
+      <div className="profile-wrapper">
         <ProfileInfo
           userId={props.userId}
           profile={props.profile}
@@ -16,7 +20,6 @@ const Profile = (props) => {
           isFetching={props.isFetching}
           isOwner={props.isOwner}
         />
-        <MyPostsContainer />
       </div>
     </div>
   );

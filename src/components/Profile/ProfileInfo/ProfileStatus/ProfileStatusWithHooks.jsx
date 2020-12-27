@@ -1,6 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import "./ProfileStatus.scss";
+
 import Preloader from "../../../common/Preloader/Preloader";
 
 const ProfileStatusWithHooks = ({ isFetching, status, updataStatus }) => {
@@ -17,6 +19,12 @@ const ProfileStatusWithHooks = ({ isFetching, status, updataStatus }) => {
     updataStatus(localStatus);
     setEditMode(false);
   };
+  const deactivateEditModeOnEnter = (e) => {
+    if (e.key === "Enter") {
+      updataStatus(localStatus);
+      setEditMode(false);
+    }
+  };
   const activateEditMode = () => {
     setEditMode(true);
   };
@@ -25,20 +33,19 @@ const ProfileStatusWithHooks = ({ isFetching, status, updataStatus }) => {
     return <Preloader />;
   }
   return (
-    <div>
-      <div>
-        {editMode ? (
-          <input
-            onChange={onStatusChange}
-            autoFocus={true}
-            onBlur={deactivateEditMode}
-            value={localStatus}
-            type="text"
-          />
-        ) : (
-          <span onDoubleClick={activateEditMode}>{status || "-----"}</span>
-        )}
-      </div>
+    <div className="profile-status">
+      {editMode ? (
+        <input
+          onChange={onStatusChange}
+          autoFocus={true}
+          onBlur={deactivateEditMode}
+          onKeyPress={deactivateEditModeOnEnter}
+          value={localStatus}
+          type="text"
+        />
+      ) : (
+        <span onDoubleClick={activateEditMode}>{status || "-----"}</span>
+      )}
     </div>
   );
 };

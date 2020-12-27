@@ -1,21 +1,37 @@
 import React from "react";
 import "./Header.scss";
 import { NavLink } from "react-router-dom";
+import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
+import VpnKeyRoundedIcon from "@material-ui/icons/VpnKeyRounded";
 
-const Header = ({ isAuth, login, email, logOut }) => {
+const Header = ({ isAuth, login, logOut }) => {
   return (
     <header className="header">
       <div className="header__auth-block">
         {isAuth ? (
-          <div>
-            <div>{login}</div>
-            <div>{email}</div>
-            <div>
-              <button onClick={logOut}>Log out</button>
+          <>
+            <div className="header__user">
+              Welcome! <span className="header__login">{login}</span>
             </div>
-          </div>
+            <div>
+              <button className="header__logout-btn" onClick={logOut}>
+                <ExitToAppRoundedIcon />
+              </button>
+            </div>
+          </>
         ) : (
-          <NavLink to="/login">LOGIN...</NavLink>
+          <>
+            <div className="header__user">
+              Welcome! <span className="header__login">Guest</span>
+            </div>
+            <div>
+              <button className="header__logout-btn">
+                <NavLink to="/login">
+                  <VpnKeyRoundedIcon />
+                </NavLink>
+              </button>
+            </div>
+          </>
         )}
       </div>
     </header>

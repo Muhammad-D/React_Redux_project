@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import s from "./ProfileInfo.module.css";
+import "./ProfileInfo.scss";
+
 import Preloader from "../../common/Preloader/Preloader";
-import travel from "../../../assets/images/travel_art_deco.jpg";
 import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
-import mockImg from "../../../assets/images/users.webp";
 import ProfileData from "./ProfileData/ProfileData";
 import ProfileDataForm from "./ProfileData/ProfileDataForm/ProfileDataForm";
-import backgroundImage from "../../../assets/images/background-image.jpg";
+import MyPostsContainer from "../MyPosts/MyPostsContainer";
+import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
+
+import mockImg from "../../../assets/images/users.webp";
 
 const ProfileInfo = ({
   profile,
@@ -18,29 +20,69 @@ const ProfileInfo = ({
   uploadPhotos,
 }) => {
   const [editMode, setEditMode] = useState(false);
+  const [editModeShow, setEditModeShow] = useState(false);
+
   const onUploadPhotos = (e) => {
-    if (e.target.files.length) uploadPhotos(e.target.files["0"]);
+    if (e.target.files.length) {
+      uploadPhotos(e.target.files["0"]);
+      setEditModeShow(!editModeShow);
+    }
   };
+
+  let fullName;
+  if (profile != null) {
+    fullName = profile.fullName.split(" ");
+  }
+
+  //window.profile = profile;
 
   if (!profile) {
     return <Preloader />;
   }
   return (
-    <div className={s.content}>
-      <div>
-        <div>
-          <img src={backgroundImage} className={s.backgroundImage} />
-          <img
-            className={s.img}
-            // src={profile.userId === userId ? travel : profile.photos.large}
-            src={profile.photos.large || mockImg}
+    <div className="profile-info">
+      <div className="profile-info__row">
+        <div className="profile-info__img-status-wrapper">
+          <div className="profile-info__img-wrapper">
+            <img
+              className="profile-info__img"
+              src={profile.photos.large || mockImg}
+            />
+            <button
+              className="profile-info__visibilety-edit-btn"
+              onClick={(e) => setEditModeShow(!editModeShow)}
+            >
+              <AddAPhotoIcon />
+            </button>
+          </div>
+          <ProfileStatusWithHooks
+            status={status}
+            updataStatus={updataStatus}
+            isFetching={isFetching}
           />
+        </div>
+        <div className={`edit-photo ${editModeShow && "edit-photo_show"}`}>
           {isOwner && (
-            <div>
-              <input onChange={onUploadPhotos} type="file" />
-            </div>
+            <label className="edit-photo__label">
+              <input
+                onChange={onUploadPhotos}
+                type="file"
+                aria-label="File browser example"
+              />
+              <span className="edit-photo__custom-btn">Choose file</span>
+            </label>
           )}
         </div>
+        <div className="profile-info__fullname">
+          {fullName && (
+            <>
+              <span className="profile-info__first-name"> {fullName[0]} </span>{" "}
+              <span className="profile-info__last-name"> {fullName[1]} </span>
+            </>
+          )}
+        </div>
+      </div>
+      <div className="profile-info__row">
         {!editMode ? (
           <ProfileData profile={profile} />
         ) : (
@@ -58,11 +100,7 @@ const ProfileInfo = ({
           </div>
         )}
         <div>
-          <ProfileStatusWithHooks
-            status={status}
-            updataStatus={updataStatus}
-            isFetching={isFetching}
-          />
+          <MyPostsContainer />
         </div>
       </div>
     </div>

@@ -1,11 +1,12 @@
-@import "../../styles/variables.scss";
+@import "../../common_styles/config";
 
 .header {
-  // border-radius: 0.4rem;
   grid-area: 1/2 / span 1/ -1;
   background-color: rgba($primary, 0.6);
   position: sticky;
   top: 0px;
+  @include flexGeneric(row, flex-end, center);
+  padding: 1rem;
 }
 
 .header__logo {
@@ -15,8 +16,31 @@
 }
 
 .header__auth-block {
-  float: right;
-  color: $secondary;
-  margin-top: 0.5rem;
-  margin-right: 1.8rem;
+  @include flexGeneric(row, flex-end, center);
+}
+
+.header__user {
+  margin-right: 1rem;
+  font-family: $main-font;
+  font-weight: weight(medium);
+}
+
+.header__login {
+  color: $purple;
+  font-weight: weight(bold);
+  font-size: larger;
+}
+
+.header__logout-btn {
+  @include flexCenter(row);
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  color: $gray-dark;
+  outline: none;
+  @include transition-ease;
+  &:hover {
+    color: $purple;
+    transform: scale(1.1);
+  }
 }

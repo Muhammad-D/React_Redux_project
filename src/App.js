@@ -20,6 +20,7 @@ import { compose } from "redux";
 import Preloader from "./components/common/Preloader/Preloader";
 import { globalInitializationSuccess } from "./redux/app-reducer";
 import store from "./redux/redux-store";
+import backGroundImg from "./assets/images/background-image.jpg";
 const ProfileContainer = lazy(() =>
   import("./components/Profile/ProfileContainer")
 );
@@ -36,6 +37,7 @@ class App extends React.Component {
     if (!this.props.initialization) return <Preloader />;
     return (
       <div className="app-wrapper">
+        {/* <div className="app-wrapper__backGroung-img"></div> */}
         <HeaderContainer />
         <NavbarContainer />
         <div className="app-wrapper__content">
