@@ -1,5 +1,4 @@
 import React, { lazy, Suspense } from "react";
-import "./App.scss";
 import {
   BrowserRouter,
   HashRouter,
@@ -7,20 +6,24 @@ import {
   Switch,
   withRouter,
 } from "react-router-dom";
+import { connect, Provider } from "react-redux";
+import { compose } from "redux";
+import { globalInitializationSuccess } from "./redux/app-reducer";
+import store from "./redux/redux-store";
+import "./App.scss";
+
+// Components
+
 import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
-import NavbarContainer from "./components/Navbar/NavbarContainer";
-// import UsersContainer from "./components/Users/UsersContainer";
-// import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
-import { connect, Provider } from "react-redux";
-import { compose } from "redux";
 import Preloader from "./components/common/Preloader/Preloader";
-import { globalInitializationSuccess } from "./redux/app-reducer";
-import store from "./redux/redux-store";
-import backGroundImg from "./assets/images/background-image.jpg";
+import Navbar from "./components/Navbar/Navbar";
+
+// Lazy Components
+
 const ProfileContainer = lazy(() =>
   import("./components/Profile/ProfileContainer")
 );
@@ -37,9 +40,8 @@ class App extends React.Component {
     if (!this.props.initialization) return <Preloader />;
     return (
       <div className="app-wrapper">
-        {/* <div className="app-wrapper__backGroung-img"></div> */}
         <HeaderContainer />
-        <NavbarContainer />
+        <Navbar />
         <div className="app-wrapper__content">
           <Suspense fallback={<div>Loading...</div>}>
             <Switch>

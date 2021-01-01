@@ -1,0 +1,11 @@
+@import "../../../common_styles/config";
+
+.profile-following {
+  @include flexCenter(column);
+
+  &__users {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+  }
+}

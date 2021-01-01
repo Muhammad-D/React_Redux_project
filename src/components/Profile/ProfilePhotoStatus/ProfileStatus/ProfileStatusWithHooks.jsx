@@ -5,7 +5,12 @@ import "./ProfileStatus.scss";
 
 import Preloader from "../../../common/Preloader/Preloader";
 
-const ProfileStatusWithHooks = ({ isFetching, status, updataStatus }) => {
+const ProfileStatusWithHooks = ({
+  isFetching,
+  status,
+  updataStatus,
+  isOwner,
+}) => {
   const [editMode, setEditMode] = useState(false);
   const [localStatus, setLocalStatus] = useState(status);
   useEffect(() => {
@@ -34,7 +39,7 @@ const ProfileStatusWithHooks = ({ isFetching, status, updataStatus }) => {
   }
   return (
     <div className="profile-status">
-      {editMode ? (
+      {editMode && isOwner ? (
         <input
           onChange={onStatusChange}
           autoFocus={true}

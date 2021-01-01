@@ -35,6 +35,14 @@ $font-weight: (
   @return map-get($font-weight, $weight-name);
 }
 
+@function set-text-color($color) {
+  @if (lightness($color) > 40%) {
+    @return $purple;
+  } @else {
+    @return $primary;
+  }
+}
+
 @mixin flexGeneric($flexDirection, $justifyContent, $alignItems) {
   display: flex;
   justify-content: $justifyContent;
@@ -50,4 +58,10 @@ $font-weight: (
 
 @mixin transition-ease {
   transition: all 0.4s ease-in-out;
+}
+
+@mixin media-md {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
 }

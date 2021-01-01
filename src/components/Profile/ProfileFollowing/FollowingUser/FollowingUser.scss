@@ -1,0 +1,12 @@
+@import "../../../../common_styles/config";
+
+.following-user {
+  @include flexCenter(column);
+
+  &__photo {
+    object-fit: cover;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+  }
+}
