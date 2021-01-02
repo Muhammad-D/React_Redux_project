@@ -1,6 +1,7 @@
 @import "../../../../common_styles/config";
 
 .following-user {
+  margin-top: 0.8rem;
   @include flexCenter(column);
 
   &__photo {
@@ -8,5 +9,12 @@
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
+  }
+
+  &__name {
+    font-size: 0.8rem;
+    font-weight: weight(regular);
+    color: rgba($dark, 1);
+    margin-top: 0.3rem;
   }
 }

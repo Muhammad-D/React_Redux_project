@@ -4,43 +4,45 @@ import {
   maxLengthCreator,
   requiredField,
 } from "../../../utilities/validation/validation";
+import Button from "../../common/Button/Button";
 import { TextArea } from "../../common/FormsControlers/FormsControlers";
-import s from "./MyPosts.module.css";
+import "./MyPosts.scss";
 import Post from "./Post/Post";
 
 const maxLength10 = maxLengthCreator(10);
 
-const MyPosts = React.memo((props) => {
-  let postsElements = props.posts.map((p, i) => (
-    <Post key={i.toString()} message={p.message} likes={p.likeCount} />
-  ));
-
-  let addPost = (formData) => {
-    props.addPost(formData.newPostBody);
+const MyPosts = React.memo(({ posts, addPost }) => {
+  let submitPost = (formData) => {
+    addPost(formData.newPostBody);
   };
 
   return (
-    <div>
-      <h3>My post</h3>
-      <MyPostsReduxForm onSubmit={addPost} />
-      <div className={s.posts}>{postsElements}</div>
+    <div className="my-posts">
+      <div className="my-posts__wrapper">
+        <h2 className="my-posts__title">Posts</h2>
+        <MyPostsReduxForm onSubmit={submitPost} />
+        <div className="my-posts__posts">
+          {posts.map((p) => (
+            <Post key={p.id} message={p.message} likes={p.likeCount} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 });
 
 const MyPostsForm = (props) => {
   return (
-    <form onSubmit={props.handleSubmit}>
-      <div>
-        <Field
-          placeholder="Enter your Post"
-          name="newPostBody"
-          component={TextArea}
-          validate={[requiredField, maxLength10]}
-        />
-      </div>
-      <div>
-        <button>Add post</button>
+    <form className="my-posts-form" onSubmit={props.handleSubmit}>
+      <Field
+        className="my-posts-form__textarea"
+        placeholder="Enter your Post"
+        name="newPostBody"
+        component={TextArea}
+        validate={[requiredField, maxLength10]}
+      />
+      <div className="my-posts-form__btn">
+        <Button>Add post</Button>
       </div>
     </form>
   );

@@ -9,23 +9,25 @@ const ProfileInfo = ({ profile }) => {
 
   return (
     <div className="profile-info">
-      {!editMode ? (
-        <ProfileData profile={profile} />
-      ) : (
-        <ProfileDataForm
-          initialValues={profile}
-          profile={profile}
-          setEditMode={setEditMode}
-        />
-      )}
+      <div className="profile-info__wrapper">
+        {!editMode ? (
+          <ProfileData profile={profile} />
+        ) : (
+          <ProfileDataForm
+            initialValues={profile}
+            profile={profile}
+            setEditMode={setEditMode}
+          />
+        )}
 
-      {editMode ? (
-        ""
-      ) : (
-        <div>
-          <button onClick={(e) => setEditMode(true)}>EDIT</button>
-        </div>
-      )}
+        {editMode ? (
+          ""
+        ) : (
+          <div>
+            <button onClick={(e) => setEditMode(true)}>EDIT</button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

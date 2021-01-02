@@ -1,7 +1,41 @@
 @import "../../../common_styles/config";
 
 .profile-following {
-  @include flexCenter(column);
+  flex: 1;
+  padding: 1rem 0.5rem 0 0;
+
+  &__wrapper {
+    @include flexCenter(column);
+    background-image: linear-gradient(30deg, rgba(red, 0.1), rgba($gray, 0.4));
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+      0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+      0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+      0 100px 80px rgba(0, 0, 0, 0.12);
+    border-radius: 10px;
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-weight: weight(medium);
+    font-size: 1.1rem;
+    color: rgba($purple, 0.9);
+    height: 29px;
+    &::after {
+      position: absolute;
+      content: "";
+      background: rgba($indigo, 0.9);
+      height: 3px;
+      width: 50%;
+      bottom: -1vw;
+      right: 0;
+      border-radius: 20px;
+      transform: translate(-50%, 0);
+    }
+  }
 
   &__users {
     width: 100%;

@@ -9,11 +9,13 @@ const ProfileFollowing = () => {
   return (
     <>
       <div className="profile-following">
-        <span className="profile-following__title">Your Friends</span>
-        <div className="profile-following__users">
-          {state.followingUsers.map((user) => (
-            <FollowingUser key={user.id} {...user} />
-          ))}
+        <div className="profile-following__wrapper">
+          <span className="profile-following__title">You Follow</span>
+          <div className="profile-following__users">
+            {state.followingUsers.map((user) => (
+              <FollowingUser key={user.id} {...user} />
+            ))}
+          </div>
         </div>
       </div>
     </>

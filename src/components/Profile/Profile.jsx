@@ -27,14 +27,16 @@ const Profile = ({
     <div className="profile">
       <img src={backgroundImage} className="profile__background-img" />
       <div className="profile__row">
-        <ProfilePhotoStatus
-          profile={profile}
-          status={status}
-          updataStatus={updataStatus}
-          isFetching={isFetching}
-          isOwner={isOwner}
-          uploadPhotos={uploadPhotos}
-        />
+        <div className="profile__row-wrapper">
+          <ProfilePhotoStatus
+            profile={profile}
+            status={status}
+            updataStatus={updataStatus}
+            isFetching={isFetching}
+            isOwner={isOwner}
+            uploadPhotos={uploadPhotos}
+          />
+        </div>
       </div>
 
       <div className="profile__row">
