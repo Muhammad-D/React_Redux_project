@@ -48,10 +48,10 @@ const ProfileDataForm = ({ handleSubmit, error, ...props }) => {
           props={{ type: "text" }}
         />
       </div>
-      <div className="person-data__contacts">
+      <div className="person-data-form__contacts">
         <strong>contacts: </strong>
         {Object.keys(props.profile.contacts).map((key) => (
-          <div key={key} className="person-data__contact">
+          <div key={key} className="person-data-form__contact">
             <strong>{key}: </strong>
             <FieldCreater
               placeholder={key}

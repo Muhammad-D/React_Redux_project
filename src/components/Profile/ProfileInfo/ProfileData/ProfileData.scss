@@ -1,0 +1,53 @@
+@import "../../../../common_styles/config";
+
+.person-data {
+  &__fullname,
+  &__about-me,
+  &__looking-for-job,
+  &__position-description {
+    width: 100%;
+    @include flexGeneric(column, center, flex-end);
+    padding-right: 0.5rem;
+    margin-bottom: 0.7rem;
+    border-right: solid 4px rgba($purple, 0.7);
+    border-radius: 5px;
+  }
+
+  &__title {
+    display: inline-block;
+    margin-bottom: 0.3rem;
+    font-size: 0.7rem;
+    color: $gray-dark;
+  }
+
+  &__value {
+    text-align: right;
+    font-size: 0.9rem;
+    font-weight: weight(bold);
+    color: rgba($color: $purple, $alpha: 0.8);
+  }
+
+  &__contacts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(2rem, 1fr));
+    justify-items: center;
+    align-items: center;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+
+    & > div {
+      @include flexCenter(row);
+      & > a {
+        @include flexCenter(row);
+        & > svg {
+          color: $gray-dark;
+          @include transition-ease;
+          &:hover {
+            color: rgba($purple, 0.7);
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
+  }
+}

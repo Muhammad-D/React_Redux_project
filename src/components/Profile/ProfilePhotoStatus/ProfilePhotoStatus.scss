@@ -15,27 +15,32 @@
     object-fit: cover;
     border: 3px solid $primary;
     border-radius: 10px;
+    box-shadow: 0 8px 16px 0 rgba($purple, 0.2);
+
     @include transition-ease;
     &:hover {
-      transform: scale(1.1);
+      box-shadow: 0 2.8px 2.2px rgba($purple, 0.034),
+        0 6.7px 5.3px rgba($purple, 0.048), 0 12.5px 10px rgba($purple, 0.06),
+        0 22.3px 17.9px rgba($purple, 0.072),
+        0 41.8px 33.4px rgba($purple, 0.086), 0 20px 40px rgba($purple, 0.12);
     }
     &:hover + .profile-photo-status__visibilety-edit-btn {
       background-color: rgba($purple, 0.7);
-      height: 2.1vw;
       color: $light;
-      top: 92%;
-      left: 91%;
-      & > svg {
-        font-size: 1.8vw;
-      }
+      // height: 2.1vw;
+      // top: 92%;
+      // left: 91%;
+      // & > svg {
+      //   font-size: 1.8vw;
+      // }
     }
   }
 
   &__visibilety-edit-btn {
     position: absolute;
-    height: 1.8vw;
-    top: 88%;
-    left: 87%;
+    height: 2.1vw;
+    top: 86%;
+    left: 86%;
     color: transparent;
     transform: translate(-50%, -50%);
     background-color: transparent;

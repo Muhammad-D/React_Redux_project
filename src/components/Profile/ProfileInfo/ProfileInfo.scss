@@ -1,8 +1,6 @@
 @import "../../../common_styles/config";
 
 .profile-info {
-  // visibility: hidden;
-  // transform: translateX(120%);
   padding: 1rem 0 0 0.5rem;
   flex: 1;
 
@@ -15,5 +13,6 @@
     border-radius: 10px;
     padding: 1rem 0.5rem 1rem 0.5rem;
     margin-bottom: 1rem;
+    text-align: right;
   }
 }

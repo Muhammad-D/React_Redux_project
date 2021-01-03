@@ -3,6 +3,7 @@ import "./ProfileInfo.scss";
 
 import ProfileData from "./ProfileData/ProfileData";
 import ProfileDataForm from "./ProfileData/ProfileDataForm/ProfileDataForm";
+import Button from "../../common/Button/Button";
 
 const ProfileInfo = ({ profile }) => {
   const [editMode, setEditMode] = useState(false);
@@ -23,9 +24,7 @@ const ProfileInfo = ({ profile }) => {
         {editMode ? (
           ""
         ) : (
-          <div>
-            <button onClick={(e) => setEditMode(true)}>EDIT</button>
-          </div>
+          <Button onClick={(e) => setEditMode(true)}>Edit</Button>
         )}
       </div>
     </div>
