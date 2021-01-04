@@ -1,7 +1,6 @@
 import React from "react";
 import "./ProfileData.scss";
 
-import ContactMailIcon from "@material-ui/icons/ContactMail";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import InstagramIcon from "@material-ui/icons/Instagram";

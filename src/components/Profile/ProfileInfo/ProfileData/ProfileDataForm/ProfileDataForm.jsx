@@ -8,63 +8,155 @@ import {
 } from "../../../../common/FormsControlers/FormsControlers";
 import { updateProfileData } from "../../../../../redux/profile-reducer";
 import style from "../../../../common/FormsControlers/FormsControlers.module.css";
+import "./ProfileDataForm.scss";
+
+import FacebookIcon from "@material-ui/icons/Facebook";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import InstagramIcon from "@material-ui/icons/Instagram";
+import TwitterIcon from "@material-ui/icons/Twitter";
+import YouTubeIcon from "@material-ui/icons/YouTube";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import WebIcon from "@material-ui/icons/Web";
+import Button from "../../../../common/Button/Button";
 
 const ProfileDataForm = ({ handleSubmit, error, ...props }) => {
-  console.log(error);
   return (
     <form className="person-data-form" onSubmit={handleSubmit}>
       <div className="person-data-form__fullname">
-        <strong>fullname: </strong>
-        <FieldCreater
-          placeholder="Fullname"
-          name="fullName"
-          component={InputArea}
-          props={{ type: "text" }}
-        />
+        <span className="person-data-form__title">fullname </span>
+        <span className="person-data-form__value">
+          <FieldCreater
+            placeholder="Fullname"
+            name="fullName"
+            component={InputArea}
+            props={{ type: "text" }}
+          />
+        </span>
       </div>
+
       <div className="person-data-form__about-me">
-        <strong>about me: </strong>
-        <FieldCreater
-          placeholder="About me"
-          name="aboutMe"
-          component={TextArea}
-          props={{ type: "text" }}
-        />
+        <span className="person-data-form__title">about me</span>
+        <span className="person-data-form__value">
+          <FieldCreater
+            placeholder="About me"
+            name="aboutMe"
+            component={TextArea}
+            props={{ type: "text" }}
+          />
+        </span>
       </div>
+
       <div className="person-data-form__looking-for-job">
-        <strong>looking for a work: </strong>
-        <FieldCreater
-          props={{ type: "checkbox" }}
-          name="lookingForAJob"
-          component={InputArea}
-        />
+        <span className="person-data-form__title">searching for a job</span>
+        <span className="person-data-form__value">
+          <FieldCreater
+            props={{ type: "checkbox" }}
+            name="lookingForAJob"
+            component={InputArea}
+          />
+        </span>
       </div>
+
       <div className="person-data-form__position-description">
-        <strong>desired job position description: </strong>
-        <FieldCreater
-          placeholder="Position description"
-          name="lookingForAJobDescription"
-          component={TextArea}
-          props={{ type: "text" }}
-        />
+        <span className="person-data-form__title">position description </span>
+        <span className="person-data-form__value">
+          <FieldCreater
+            placeholder="Position description"
+            name="lookingForAJobDescription"
+            component={TextArea}
+            props={{ type: "text" }}
+          />
+        </span>
       </div>
+
       <div className="person-data-form__contacts">
-        <strong>contacts: </strong>
-        {Object.keys(props.profile.contacts).map((key) => (
-          <div key={key} className="person-data-form__contact">
-            <strong>{key}: </strong>
+        <div className="person-data-form__github">
+          <GitHubIcon />
+          <span className="person-data-form__value">
             <FieldCreater
-              placeholder={key}
-              name={`contacts.${key}`}
+              placeholder={props.profile.contacts.github}
+              name={`contacts.github`}
               component={InputArea}
               props={{ type: "text" }}
             />
-          </div>
-        ))}
+          </span>
+        </div>
+
+        <div className="person-data-form__instagram">
+          <InstagramIcon />
+          <span className="person-data-form__value">
+            <FieldCreater
+              placeholder={props.profile.contacts.instagram}
+              name={`contacts.instagram`}
+              component={InputArea}
+              props={{ type: "text" }}
+            />
+          </span>
+        </div>
+
+        <div className="person-data-form__linkin">
+          <LinkedInIcon />
+          <span className="person-data-form__value">
+            <FieldCreater
+              placeholder={props.profile.contacts.mainLink}
+              name={`contacts.mainLink`}
+              component={InputArea}
+              props={{ type: "text" }}
+            />
+          </span>
+        </div>
+
+        <div className="person-data-form__facebook">
+          <FacebookIcon />
+          <span className="person-data-form__value">
+            <FieldCreater
+              placeholder={props.profile.contacts.facebook}
+              name={`contacts.facebook`}
+              component={InputArea}
+              props={{ type: "text" }}
+            />
+          </span>
+        </div>
+
+        <div className="person-data-form__twitter">
+          <TwitterIcon />
+          <span className="person-data-form__value">
+            <FieldCreater
+              placeholder={props.profile.contacts.twitter}
+              name={`contacts.twitter`}
+              component={InputArea}
+              props={{ type: "text" }}
+            />
+          </span>
+        </div>
+
+        <div className="person-data-form__youtube">
+          <YouTubeIcon />
+          <span className="person-data-form__value">
+            <FieldCreater
+              placeholder={props.profile.contacts.youtube}
+              name={`contacts.youtube`}
+              component={InputArea}
+              props={{ type: "text" }}
+            />
+          </span>
+        </div>
+
+        <div className="person-data-form__website">
+          <WebIcon />
+          <span className="person-data-form__value">
+            <FieldCreater
+              placeholder={props.profile.contacts.website}
+              name={`contacts.website`}
+              component={InputArea}
+              props={{ type: "text" }}
+            />
+          </span>
+        </div>
       </div>
       {error && <div className={style.errorForm}>{error}</div>}
       <div className="person-data-form__submit-button">
-        <button>Submit</button>
+        <Button>Submit</Button>
       </div>
     </form>
   );
