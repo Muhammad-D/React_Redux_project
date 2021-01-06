@@ -1,0 +1,45 @@
+@import "../../common_styles/config";
+
+.login {
+  @include flexCenter(row);
+  height: 80%;
+
+  &__logo {
+    min-width: 40px;
+    width: 20%;
+  }
+
+  &__wrapper {
+    width: 35vw;
+    height: 70vh;
+    padding: 4rem 3rem;
+    background-color: rgba($purple, 0.2);
+    border-radius: 3rem;
+    @include flexGeneric(column, flex-start, center);
+  }
+
+  &__form {
+    align-self: stretch;
+  }
+
+  &__input-wrapper {
+    @include flexGeneric(row, flex-start, center);
+    width: 100%;
+
+    & > div {
+      width: 100%;
+      & > div {
+        width: 100%;
+        & > input {
+          width: 100%;
+          background-color: transparent;
+          border: none;
+        }
+      }
+    }
+  }
+
+  &__checkbox-label {
+    @include flexGeneric(row, flex-start, center);
+  }
+}
