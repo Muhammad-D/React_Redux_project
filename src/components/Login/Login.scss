@@ -9,6 +9,14 @@
     width: 20%;
   }
 
+  &__title {
+    margin: 1vw 0;
+  }
+
+  &__text {
+    margin: 0.3vw 0 0.5vw 0;
+  }
+
   &__wrapper {
     width: 35vw;
     height: 70vh;
@@ -24,13 +32,23 @@
 
   &__input-wrapper {
     @include flexGeneric(row, flex-start, center);
+    background-color: rgba($primary, 1);
+    padding: 0.2rem 1rem 0.2rem 0.2rem;
+    margin-bottom: 0.6rem;
+    border-radius: 50px;
     width: 100%;
+    border: 1px solid transparent;
+    @include transition-ease;
+    &:focus {
+      border: 1px solid $purple;
+    }
 
     & > div {
       width: 100%;
       & > div {
         width: 100%;
         & > input {
+          outline: none;
           width: 100%;
           background-color: transparent;
           border: none;
@@ -39,7 +57,38 @@
     }
   }
 
+  &__icon {
+    border-radius: 50%;
+    padding: 0.3rem;
+    margin-right: 0.4rem;
+    background-color: rgba($purple, 0.2);
+    @include flexCenter(row);
+  }
+
   &__checkbox-label {
     @include flexGeneric(row, flex-start, center);
+    margin-bottom: 0.4rem;
+  }
+
+  &__btn {
+    width: 100%;
+    background-image: linear-gradient(
+      90deg,
+      #8224e3 0,
+      #a968ec 50%,
+      #8224e3 100%
+    );
+    border: 1px solid transparent;
+    border-radius: 50px;
+    padding: 1rem;
+    color: $primary;
+    outline: none;
+    @include transition-ease;
+    &:hover {
+      border: 1px solid $primary;
+    }
+    &:active {
+      border: 1px solid $primary;
+    }
   }
 }

@@ -68,9 +68,7 @@ const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
           />
         )}
         {error && <div className={style.errorForm}>{error}</div>}
-        <div>
-          <button>LogIn</button>
-        </div>
+        <button className="login__btn">Log into your account</button>
       </form>
     </>
   );
@@ -91,7 +89,7 @@ class Login extends React.Component {
         <section className="login__wrapper">
           <img src={logo} alt="logo" className="login__logo" />
           <h1 className="login__title">Welcome</h1>
-          <p className="login__text">Join us us today</p>
+          <p className="login__text">Join us today</p>
           <LoginReduxForm
             onSubmit={this.reduxOnSubmit}
             captchaUrl={this.props.captchaUrl}
