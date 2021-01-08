@@ -32,7 +32,7 @@
 
   &__input-wrapper {
     @include flexGeneric(row, flex-start, center);
-    background-color: rgba($primary, 1);
+    background-color: rgb(232, 240, 254);
     padding: 0.2rem 1rem 0.2rem 0.2rem;
     margin-bottom: 0.6rem;
     border-radius: 50px;
