@@ -4,25 +4,35 @@ import avatarImg from "../../../assets/images/users.webp";
 import { NavLink } from "react-router-dom";
 
 const User = ({ followProgressing, unfollow, follow, user }) => {
+  let fullName = user.name?.split(" ");
+
+  window.user = user;
   return (
     <div className="user">
-      <NavLink to={`/profile/${user.id}`}>
+      <NavLink className="user__link" to={`/profile/${user.id}`}>
         <img
           className="user__image"
           src={user.photos.small != null ? user.photos.small : avatarImg}
         />
       </NavLink>
-      <div>
-        <div>
-          <div>{user.name}</div>
-          <div>{user.status}</div>
+      <div className="user__information">
+        <div className="profile-photo-status__fullname">
+          {fullName && (
+            <>
+              <span className="profile-photo-status__first-name">
+                {" "}
+                {fullName[0]}{" "}
+              </span>{" "}
+              <span className="profile-photo-status__last-name">
+                {" "}
+                {fullName[1]}{" "}
+              </span>
+            </>
+          )}
         </div>
-        <div>
-          <div>{"u.location.city"}</div>
-          <div>{"u.location.country"}</div>
-        </div>
+        <div>{user.status}</div>
       </div>
-      <div>
+      <div className="user__btn">
         {user.followed ? (
           <button
             disabled={followProgressing.some((id) => id === user.id)}
