@@ -16,6 +16,9 @@
     height: 12vw;
     width: fit-content;
     border-radius: 0.7rem;
+    box-shadow: 0 16px 30px -20px rgba(black, 0.8),
+      0 -16px 30px -20px rgba(black, 0.8), 10px 0 30px -20px rgba(black, 0.8),
+      -10px 0 30px -20px rgba(black, 0.8);
   }
 
   &__image {
@@ -28,55 +31,43 @@
   &__information {
     align-self: stretch;
     flex: 1;
-    margin: 0 1rem;
+    margin: 0 1rem 0 3rem;
+    padding: 0.2rem 0;
     border-right: solid 1px rgba($gray, 0.5);
   }
+  &__first-name {
+    color: rgba($purple, 0.8);
+    font-weight: weight(bold);
+    font-size: 2rem;
+  }
+  &__last-name {
+    display: inline-block;
+    color: rgba($primary, 0.8);
+    font-size: 2.2rem;
+    background-color: rgba($purple, 0.8);
+    padding: 0.1rem 0.3rem;
+    border-radius: 5px;
+    font-weight: weight(medium);
+  }
+
+  &__status {
+    background-color: rgba($purple, 0.2);
+    font-size: 1.2rem;
+    padding: 0.1rem 0.3rem;
+    font-weight: weight(bold);
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: rgba($gray-dark, 0.8);
+  }
+
+  &__btn > .btn > button {
+    width: 9vw;
+    min-width: 125px;
+    &:disabled {
+      background-image: none;
+      background-color: rgba($purple, 0.5);
+      color: rgba($primary, 0.2);
+    }
+  }
 }
-
-// .avaImg img {
-//   height: 4rem;
-//   border-radius: 0.8rem;
-// }
-
-// .status .statusChild {
-//   display: inline-block;
-//   margin: 0 1rem;
-// }
-
-// .appWrapper {
-//   margin-bottom: 0.4rem;
-//   display: grid;
-//   grid-template-areas:
-//     "i s"
-//     "f s";
-//   grid-template-rows: 3fr 1fr;
-//   grid-template-columns: 1.5fr 10fr;
-//   grid-gap: 0.3rem;
-// }
-
-// .avaImg {
-//   grid-area: i;
-// }
-
-// .status {
-//   grid-area: s;
-//   border: 0.2rem solid black;
-//   border-radius: 1rem;
-//   margin-right: 15rem;
-// }
-
-// .followBtn {
-//   grid-area: f;
-// }
-
-// .pagginationStyle {
-//   margin: 0 0.07rem;
-//   border: solid black 0.001rem;
-//   border-radius: 0.4rem;
-// }
-
-// .pageCountSelector {
-//   font-weight: bolder;
-//   display: inline-block;
-//   margin: 0 0.1rem;
-// }

@@ -31,13 +31,6 @@ const Users = ({
           />
         ))}
       </section>
-
-      <Pagination
-        totalItemsCount={totalUsersCount}
-        pageSize={pageSize}
-        currentPage={currentPage}
-        onPageChanged={onPageChanged}
-      />
     </div>
   );
 };

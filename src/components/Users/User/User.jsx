@@ -3,6 +3,8 @@ import "./User.scss";
 import avatarImg from "../../../assets/images/users.webp";
 import { NavLink } from "react-router-dom";
 
+import Button from "../../common/Button/Button";
+
 const User = ({ followProgressing, unfollow, follow, user }) => {
   let fullName = user.name?.split(" ");
 
@@ -16,41 +18,37 @@ const User = ({ followProgressing, unfollow, follow, user }) => {
         />
       </NavLink>
       <div className="user__information">
-        <div className="profile-photo-status__fullname">
+        <div className="user__fullname">
           {fullName && (
             <>
-              <span className="profile-photo-status__first-name">
-                {" "}
-                {fullName[0]}{" "}
-              </span>{" "}
-              <span className="profile-photo-status__last-name">
-                {" "}
-                {fullName[1]}{" "}
-              </span>
+              <span className="user__first-name"> {fullName[0]} </span>{" "}
+              {fullName[1] && (
+                <span className="user__last-name"> {fullName[1]} </span>
+              )}
             </>
           )}
         </div>
-        <div>{user.status}</div>
+        {user.status && <span className="user__status">{user.status}</span>}
       </div>
       <div className="user__btn">
         {user.followed ? (
-          <button
+          <Button
             disabled={followProgressing.some((id) => id === user.id)}
             onClick={() => {
               unfollow(user.id);
             }}
           >
             UNFOLLOWED
-          </button>
+          </Button>
         ) : (
-          <button
+          <Button
             disabled={followProgressing.some((id) => id === user.id)}
             onClick={() => {
               follow(user.id);
             }}
           >
             FOLLOWED
-          </button>
+          </Button>
         )}
       </div>
     </div>
