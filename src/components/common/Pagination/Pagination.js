@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import style from "./Pagination.module.css";
-import classNames from "classnames/bind";
+import "./Pagination.scss";
 
-let cn = classNames.bind(style);
+import Button from "../Button/Button";
+import classNames from "classnames";
 
 export const Pagination = ({
   totalItemsCount,
@@ -13,9 +13,7 @@ export const Pagination = ({
 }) => {
   let pagesCount = Math.ceil(totalItemsCount / pageSize);
   let pages = [];
-  for (let i = 1; i <= pagesCount; i++) {
-    pages.push(i);
-  }
+  for (let i = 1; i <= pagesCount; i++) pages.push(i);
 
   let portionsNumber = Math.ceil(pagesCount / pagesPortion);
 
@@ -25,31 +23,27 @@ export const Pagination = ({
   let rightPortionNumber = portionIndexNumber * pagesPortion;
 
   return (
-    <div className={style.pagination}>
-      {portionIndexNumber > 1 && (
-        <button
-          onClick={(e) => {
-            portionIndexNumber > 1 &&
-              setPortionIndexNumber(portionIndexNumber - 1);
-          }}
-        >
-          PREV
-        </button>
-      )}
+    <div className="pagination">
+      <Button
+        disabled={portionIndexNumber <= 1}
+        onClick={(e) => {
+          portionIndexNumber > 1 &&
+            setPortionIndexNumber(portionIndexNumber - 1);
+          onPageChanged(leftPortionNumber - pagesPortion);
+        }}
+      >
+        PREV
+      </Button>
+
       {pages
         .filter((p) => p >= leftPortionNumber && p <= rightPortionNumber)
         .map((p) => {
           return (
             <span
               key={p}
-              // className={
-              //   currentPage === p
-              //     ? style.pageCountSelector
-              //     : style.pagginationStyle
-              // }
-              className={cn(
-                { [style.pageCountSelector]: currentPage === p },
-                style.pagginationStyle
+              className={classNames(
+                { "pagination__page-number_selected": currentPage === p },
+                "pagination__page-number"
               )}
               onClick={(e) => {
                 onPageChanged(p);
@@ -59,17 +53,18 @@ export const Pagination = ({
             </span>
           );
         })}
-      {portionIndexNumber < portionsNumber && (
-        <button
-          onClick={(e) => {
-            if (portionIndexNumber < portionsNumber) {
-              setPortionIndexNumber(portionIndexNumber + 1);
-            }
-          }}
-        >
-          NEXT
-        </button>
-      )}
+
+      <Button
+        disabled={portionIndexNumber >= portionsNumber}
+        onClick={(e) => {
+          if (portionIndexNumber < portionsNumber) {
+            setPortionIndexNumber(portionIndexNumber + 1);
+            onPageChanged(rightPortionNumber + 1);
+          }
+        }}
+      >
+        NEXT
+      </Button>
     </div>
   );
 };

@@ -1,0 +1,31 @@
+@import "../../../common_styles/config";
+
+.pagination {
+  margin: 2rem;
+  @include flexCenter(row);
+
+  &__page-number {
+    @include flexCenter(row);
+    font-weight: weight(medium);
+    margin: 0 0.3rem;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    color: $primary;
+    background-color: lighten($purple, 20%);
+    @include transition-ease;
+  }
+
+  &__page-number_selected {
+    color: darken($primary, 30%);
+    background-color: lighten($purple, 40%);
+  }
+
+  & > .btn > button {
+    &:disabled {
+      background-image: none;
+      background-color: lighten($purple, 30%);
+      color: rgba($primary, 0.5);
+    }
+  }
+}

@@ -7,7 +7,7 @@ import {
   TextArea,
 } from "../../../../common/FormsControlers/FormsControlers";
 import { updateProfileData } from "../../../../../redux/profile-reducer";
-import style from "../../../../common/FormsControlers/FormsControlers.module.css";
+import "../../../../common/FormsControlers/FormsControlers.scss";
 import "./ProfileDataForm.scss";
 
 import FacebookIcon from "@material-ui/icons/Facebook";
@@ -50,9 +50,9 @@ const ProfileDataForm = ({ handleSubmit, error, ...props }) => {
         <span className="person-data-form__title">searching for a job</span>
         <span className="person-data-form__value">
           <FieldCreater
-            props={{ type: "checkbox" }}
             name="lookingForAJob"
             component={InputArea}
+            props={{ type: "checkbox" }}
           />
         </span>
       </div>
@@ -154,7 +154,7 @@ const ProfileDataForm = ({ handleSubmit, error, ...props }) => {
           </span>
         </div>
       </div>
-      {error && <div className={style.errorForm}>{error}</div>}
+      {/* {error && <div className="errorForm">{error}</div>} */}
       <div className="person-data-form__submit-button">
         <Button>Submit</Button>
       </div>

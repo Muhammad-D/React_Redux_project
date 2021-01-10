@@ -1,21 +1,27 @@
 import React from "react";
 import { Field } from "redux-form";
-import style from "./FormsControlers.module.css";
+import "./FormsControlers.scss";
+
+import cn from "classnames";
 
 const ValidationTemplate = ({ meta: { touched, error }, children }) => {
   const hasError = touched && error;
   return (
-    <div className={`${style.formControl} ${hasError && style.error}`}>
+    <label
+      className={cn("form-controler", { "form-controler_has-error": hasError })}
+    >
       {children}
-      {hasError && <span>{error}</span>}
-    </div>
+      {hasError && (
+        <span className="form-controler__error-message">{error}</span>
+      )}
+    </label>
   );
 };
 
 export const TextArea = ({ input, ...props }) => {
   return (
     <ValidationTemplate {...props}>
-      <textarea {...input} {...props} />
+      <textarea className="form-controler__textarea" {...input} {...props} />
     </ValidationTemplate>
   );
 };
@@ -23,7 +29,7 @@ export const TextArea = ({ input, ...props }) => {
 export const InputArea = ({ input, ...props }) => {
   return (
     <ValidationTemplate {...props}>
-      <input {...input} {...props} />
+      <input className="form-controler__input" {...input} {...props} />
     </ValidationTemplate>
   );
 };
@@ -37,7 +43,7 @@ export const FieldCreater = ({
   text,
 }) => {
   return (
-    <div>
+    <>
       <Field
         placeholder={placeholder}
         name={name}
@@ -46,6 +52,6 @@ export const FieldCreater = ({
         {...props}
       />
       {text}
-    </div>
+    </>
   );
 };
