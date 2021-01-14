@@ -27,12 +27,6 @@
     &:hover + .profile-photo-status__visibilety-edit-btn {
       background-color: rgba($purple, 0.7);
       color: $light;
-      // height: 2.1vw;
-      // top: 92%;
-      // left: 91%;
-      // & > svg {
-      //   font-size: 1.8vw;
-      // }
     }
   }
 
@@ -47,6 +41,7 @@
     border-radius: 5px;
     border: none;
     outline: none;
+    cursor: pointer;
 
     @include flexCenter(row);
     @include transition-ease;
@@ -96,6 +91,7 @@
   visibility: initial;
   .edit-photo__custom-btn {
     color: rgba($purple, 0.8);
+    cursor: pointer;
     background-image: linear-gradient(
       to bottom right,
       rgba($gray, 0.3),

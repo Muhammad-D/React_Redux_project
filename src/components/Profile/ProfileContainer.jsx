@@ -27,6 +27,7 @@ class ProfileContainer extends React.Component {
     }
   }
   render() {
+    window.ppropps = this.props;
     return (
       <>
         <Profile
@@ -51,12 +52,7 @@ const mapStateToProps = (state) => ({
   userId: state.auth.id,
 });
 
-// let AuthRedirectComponent = WithAuthReddirect(ProfileContainer);
-
-// let WithUrlDataContainerComponent = withRouter(AuthRedirectComponent);
-
 export default compose(
   WithAuthReddirect,
-  withRouter,
   connect(mapStateToProps, { setUser, getStatus, updataStatus, uploadPhotos })
 )(ProfileContainer);

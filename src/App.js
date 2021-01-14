@@ -75,11 +75,11 @@ const AppContainer = compose(
 
 const AppWrapper = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Provider store={store}>
         <AppContainer />
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 export default AppWrapper;

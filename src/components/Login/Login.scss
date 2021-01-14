@@ -103,6 +103,7 @@
     padding: 1rem;
     color: $primary;
     outline: none;
+    cursor: pointer;
     @include transition-ease;
     &:hover {
       border: 1px solid $primary;

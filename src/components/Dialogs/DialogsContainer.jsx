@@ -23,28 +23,3 @@ export default compose(
   WithAuthReddirect,
   connect(mapStateToProps, mapDispatchToProps)
 )(Dialogs);
-
-// const DialogsContainer = () => {
-//   return (
-//     <StoreContext.Consumer>
-//       {(store) => {
-//         let state = store.getState().dialogPage;
-
-//         let addMessage = () => {
-//           store.dispatch(actionCreaterAddMessage());
-//         };
-
-//         let onMessageChange = (value) => {
-//           store.dispatch(actionCreaterChangeMessage(value));
-//         };
-//         return (
-//           <Dialogs
-//             addMessage={addMessage}
-//             onMessageChange={onMessageChange}
-//             state={state}
-//           />
-//         );
-//       }}
-//     </StoreContext.Consumer>
-//   );
-// };
