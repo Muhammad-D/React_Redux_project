@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/React_Redux_project/static/css/main.6ab783f7.chunk.css",
+    "main.js": "/React_Redux_project/static/js/main.de79fc1b.chunk.js",
+    "main.js.map": "/React_Redux_project/static/js/main.de79fc1b.chunk.js.map",
+    "runtime-main.js": "/React_Redux_project/static/js/runtime-main.9a828ad7.js",
+    "runtime-main.js.map": "/React_Redux_project/static/js/runtime-main.9a828ad7.js.map",
+    "static/js/2.0c5ec586.chunk.js": "/React_Redux_project/static/js/2.0c5ec586.chunk.js",
+    "static/js/2.0c5ec586.chunk.js.map": "/React_Redux_project/static/js/2.0c5ec586.chunk.js.map",
+    "static/css/3.3657edf7.chunk.css": "/React_Redux_project/static/css/3.3657edf7.chunk.css",
+    "static/js/3.46d36f9d.chunk.js": "/React_Redux_project/static/js/3.46d36f9d.chunk.js",
+    "static/js/3.46d36f9d.chunk.js.map": "/React_Redux_project/static/js/3.46d36f9d.chunk.js.map",
+    "static/css/4.6815f673.chunk.css": "/React_Redux_project/static/css/4.6815f673.chunk.css",
+    "static/js/4.60b5d4db.chunk.js": "/React_Redux_project/static/js/4.60b5d4db.chunk.js",
+    "static/js/4.60b5d4db.chunk.js.map": "/React_Redux_project/static/js/4.60b5d4db.chunk.js.map",
+    "static/css/5.824bdbeb.chunk.css": "/React_Redux_project/static/css/5.824bdbeb.chunk.css",
+    "static/js/5.dae73ca6.chunk.js": "/React_Redux_project/static/js/5.dae73ca6.chunk.js",
+    "static/js/5.dae73ca6.chunk.js.map": "/React_Redux_project/static/js/5.dae73ca6.chunk.js.map",
+    "index.html": "/React_Redux_project/index.html",
+    "precache-manifest.ffeae73e832a0a602e2123842b87086b.js": "/React_Redux_project/precache-manifest.ffeae73e832a0a602e2123842b87086b.js",
+    "service-worker.js": "/React_Redux_project/service-worker.js",
+    "static/css/3.3657edf7.chunk.css.map": "/React_Redux_project/static/css/3.3657edf7.chunk.css.map",
+    "static/css/4.6815f673.chunk.css.map": "/React_Redux_project/static/css/4.6815f673.chunk.css.map",
+    "static/css/5.824bdbeb.chunk.css.map": "/React_Redux_project/static/css/5.824bdbeb.chunk.css.map",
+    "static/css/main.6ab783f7.chunk.css.map": "/React_Redux_project/static/css/main.6ab783f7.chunk.css.map",
+    "static/js/2.0c5ec586.chunk.js.LICENSE.txt": "/React_Redux_project/static/js/2.0c5ec586.chunk.js.LICENSE.txt",
+    "static/media/background-image.jpg": "/React_Redux_project/static/media/background-image.811d9953.jpg",
+    "static/media/logo-icon.svg": "/React_Redux_project/static/media/logo-icon.faa1770d.svg",
+    "static/media/tenor.gif": "/React_Redux_project/static/media/tenor.3570cafa.gif",
+    "static/media/users.webp": "/React_Redux_project/static/media/users.8e559fa7.webp"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9a828ad7.js",
+    "static/js/2.0c5ec586.chunk.js",
+    "static/css/main.6ab783f7.chunk.css",
+    "static/js/main.de79fc1b.chunk.js"
+  ]
+}
